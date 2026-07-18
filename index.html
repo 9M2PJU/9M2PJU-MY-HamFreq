@@ -517,6 +517,7 @@
 
 
 
+
   <!-- SEO: Pre-rendered frequency data for search engine crawlers -->
   <!-- The interactive JS app replaces #output; this content ensures crawlers
        and no-JS users can see all frequency data. -->
@@ -3301,7 +3302,7 @@
       });
 
       let html = '';
-      ['PMR', 'Repeaters', 'Simplex'].forEach(cat => {
+      ['Repeaters', 'Simplex', 'PMR'].forEach(cat => {
         const title = cat === 'PMR' ? 'PMR / LPD (446 MHz)' : cat;
         html += createSection(title, groups[cat]);
       });
