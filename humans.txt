@@ -1,0 +1,18 @@
+/* TEAM */
+Founder: 9M2PJU
+Contact: https://hamradio.my
+Twitter: @9M2PJU
+Location: Malaysia
+
+/* THANKS */
+RepeaterBook (repeaterbook.com) — repeater data source
+MARTS — Malaysian Amateur Radio Transmitters' Society
+ASTRA — Amateur Radio Transmitters' Association
+All Malaysian amateur radio operators who contribute frequency data
+
+/* SITE */
+Last update: 2026
+Standards: HTML5, CSS3, JavaScript (ES6+)
+Components: Tailwind CSS, PapaParse, Font Awesome
+License: GPL-3.0
+Language: English

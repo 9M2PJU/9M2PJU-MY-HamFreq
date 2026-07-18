@@ -1,39 +1,100 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://frequency.hamradio.my/</loc>
     <lastmod>2026-07-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://frequency.hamradio.my/icon-512x512.png</image:loc>
+      <image:title>MY-HamFreq Logo</image:title>
+      <image:caption>Malaysian Amateur Radio Frequency Database logo</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://frequency.hamradio.my/icon-192x192.png</image:loc>
+      <image:title>MY-HamFreq Icon</image:title>
+      <image:caption>Malaysian Amateur Radio Frequency Database icon</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://frequency.hamradio.my/faq.html</loc>
     <lastmod>2026-07-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://frequency.hamradio.my/icon-512x512.png</image:loc>
+      <image:title>MY-HamFreq Logo</image:title>
+      <image:caption>Malaysian Amateur Radio Frequency Database logo</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://frequency.hamradio.my/icon-192x192.png</image:loc>
+      <image:title>MY-HamFreq Icon</image:title>
+      <image:caption>Malaysian Amateur Radio Frequency Database icon</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://frequency.hamradio.my/about.html</loc>
     <lastmod>2026-07-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://frequency.hamradio.my/icon-512x512.png</image:loc>
+      <image:title>MY-HamFreq Logo</image:title>
+      <image:caption>Malaysian Amateur Radio Frequency Database logo</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://frequency.hamradio.my/icon-192x192.png</image:loc>
+      <image:title>MY-HamFreq Icon</image:title>
+      <image:caption>Malaysian Amateur Radio Frequency Database icon</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://frequency.hamradio.my/chirp-guide.html</loc>
     <lastmod>2026-07-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://frequency.hamradio.my/icon-512x512.png</image:loc>
+      <image:title>MY-HamFreq Logo</image:title>
+      <image:caption>Malaysian Amateur Radio Frequency Database logo</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://frequency.hamradio.my/icon-192x192.png</image:loc>
+      <image:title>MY-HamFreq Icon</image:title>
+      <image:caption>Malaysian Amateur Radio Frequency Database icon</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://frequency.hamradio.my/pmr446-guide.html</loc>
     <lastmod>2026-07-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://frequency.hamradio.my/icon-512x512.png</image:loc>
+      <image:title>MY-HamFreq Logo</image:title>
+      <image:caption>Malaysian Amateur Radio Frequency Database logo</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://frequency.hamradio.my/icon-192x192.png</image:loc>
+      <image:title>MY-HamFreq Icon</image:title>
+      <image:caption>Malaysian Amateur Radio Frequency Database icon</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://frequency.hamradio.my/bands-guide.html</loc>
     <lastmod>2026-07-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://frequency.hamradio.my/icon-512x512.png</image:loc>
+      <image:title>MY-HamFreq Logo</image:title>
+      <image:caption>Malaysian Amateur Radio Frequency Database logo</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://frequency.hamradio.my/icon-192x192.png</image:loc>
+      <image:title>MY-HamFreq Icon</image:title>
+      <image:caption>Malaysian Amateur Radio Frequency Database icon</image:caption>
+    </image:image>
   </url>
 </urlset>

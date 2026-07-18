@@ -1,9 +1,9 @@
-const CACHE_NAME = 'my-hamfreq-v4';
+const CACHE_NAME = 'my-hamfreq-v5';
 const STATIC_ASSETS = [
   './',
   './index.html',
   './manifest.json',
-  './my_flag_round.svg',
+  './favicon.ico',
   './icon-192x192.png',
   './icon-512x512.png',
   './assets/styles.css',

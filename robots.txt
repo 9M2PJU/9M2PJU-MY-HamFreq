@@ -1,4 +1,46 @@
 User-agent: *
 Allow: /
+Allow: /9M2PJU.csv
+Allow: /index.html
+Allow: /faq.html
+Allow: /about.html
+Allow: /chirp-guide.html
+Allow: /pmr446-guide.html
+Allow: /bands-guide.html
+Allow: /sitemap.xml
+Allow: /manifest.json
+Allow: /icon-192x192.png
+Allow: /icon-512x512.png
+Allow: /favicon.ico
+Allow: /assets/
 
+# Block nothing — all content is indexable
+Disallow:
+
+# Sitemaps
 Sitemap: https://frequency.hamradio.my/sitemap.xml
+
+# Explicit allow for major search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /

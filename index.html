@@ -5,24 +5,44 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description"
-    content="Malaysian Ham Radio Frequencies: A curated, searchable database of simplex, repeater, and PMR frequencies for Malaysian amateur radio operators. CHIRP-compatible." />
+    content="Malaysian Ham Radio Frequencies: A curated, searchable database of 206 simplex, repeater, and PMR frequencies for Malaysian amateur radio operators. CHIRP-compatible CSV download." />
   <meta name="keywords"
-    content="frekuensi, walkie talkie, pengulang, radio amatur, Malaysia, radio ham, radio amateur, Malaysia ham radio, repeater frequency, simplex, PMR446, CHIRP, amateur radio, VHF, UHF, 9M2PJU" />
+    content="frekuensi, walkie talkie, pengulang, radio amatur, Malaysia, radio ham, radio amateur, Malaysia ham radio, repeater frequency, simplex, PMR446, CHIRP, amateur radio, VHF, UHF, 9M2PJU, ham radio Malaysia, amateur radio Malaysia, Malaysian repeater, repeater Malaysia, 2m repeater, 70cm repeater, APRS Malaysia, DMR Malaysia, Baofeng Malaysia, Yaesu Malaysia" />
   <meta name="author" content="9M2PJU" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <meta name="language" content="English" />
+  <meta name="revisit-after" content="7 days" />
+  <meta name="rating" content="general" />
+  <meta name="distribution" content="global" />
   <meta name="theme-color" content="#0f172a" />
+  <meta name="application-name" content="MY-HamFreq" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="MY-HamFreq" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="msapplication-TileColor" content="#0f172a" />
+  <meta name="msapplication-TileImage" content="icon-192x192.png" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
 
   <!-- Open Graph / Social -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://frequency.hamradio.my" />
   <meta property="og:title" content="Malaysian Amateur Radio Frequency Database" />
   <meta property="og:description"
-    content="Curated simplex, repeater, and PMR frequencies for Malaysian amateur radio operators." />
-  <meta property="og:image" content="https://frequency.hamradio.my/my_flag_round.svg" />
-  <meta name="twitter:card" content="summary" />
+    content="Curated database of 206 simplex, repeater, and PMR frequencies for Malaysian amateur radio operators. CHIRP-compatible." />
+  <meta property="og:image" content="https://frequency.hamradio.my/icon-512x512.png" />
+  <meta property="og:image:width" content="512" />
+  <meta property="og:image:height" content="512" />
+  <meta property="og:image:alt" content="MY-HamFreq logo — Malaysian Amateur Radio Frequency Database" />
+  <meta property="og:site_name" content="Malaysian Amateur Radio Frequency Database" />
+  <meta property="og:locale" content="en_MY" />
+  <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Malaysian Amateur Radio Frequency Database" />
   <meta name="twitter:description"
-    content="Curated simplex, repeater, and PMR frequencies for Malaysian amateur radio operators." />
-  <meta name="twitter:image" content="https://frequency.hamradio.my/my_flag_round.svg" />
+    content="Curated database of 206 simplex, repeater, and PMR frequencies for Malaysian amateur radio operators. CHIRP-compatible." />
+  <meta name="twitter:image" content="https://frequency.hamradio.my/icon-512x512.png" />
+  <meta name="twitter:image:alt" content="MY-HamFreq logo — Malaysian Amateur Radio Frequency Database" />
   <meta name="geo.region" content="MY" />
   <meta name="geo.placename" content="Malaysia" />
   <meta name="geo.position" content="3.1390;101.6869" />
@@ -31,7 +51,8 @@
 
   <title>Malaysian Amateur Radio Frequency Database</title>
   <link rel="canonical" href="https://frequency.hamradio.my/" />
-  <link rel="icon" href="my_flag_round.svg" type="image/svg+xml" />
+  <link rel="icon" href="favicon.ico" sizes="any" />
+  <link rel="icon" href="icon-192x192.png" type="image/png" sizes="192x192" />
   <link rel="apple-touch-icon" href="icon-192x192.png" />
 
   <!-- PWA -->
@@ -52,8 +73,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+  <link rel="preconnect" href="https://www.openstreetmap.org" />
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swapfamily=Space+Grotesk:wght@400;500;600;700https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swapfamily=JetBrains+Mono:wght@400;500;600https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swapdisplay=swap"
     rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -72,11 +94,18 @@
     }
 
     body {
-      background-color: #020617;
+      background-color: #0a0e1a;
       background-image:
-        radial-gradient(ellipse at top, rgba(37, 99, 235, 0.12), transparent 55%),
-        radial-gradient(ellipse at bottom right, rgba(99, 102, 241, 0.08), transparent 50%);
+        radial-gradient(ellipse 80% 50% at 50% -10%, rgba(79, 70, 229, 0.08), transparent 60%),
+        radial-gradient(ellipse 60% 40% at 100% 100%, rgba(99, 102, 241, 0.05), transparent 60%);
       background-attachment: fixed;
+      font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    }
+
+    /* Headings use Space Grotesk for a refined, technical character */
+    h1, h2, h3, h4, h5, h6 {
+      font-family: "Space Grotesk", Inter, sans-serif;
+      letter-spacing: -0.02em;
     }
 
     /* Smooth scrolling */
@@ -86,33 +115,58 @@
 
     /* Custom scrollbar */
     ::-webkit-scrollbar {
-      width: 8px;
-      height: 8px;
+      width: 10px;
+      height: 10px;
     }
 
     ::-webkit-scrollbar-track {
-      background: #0f172a;
+      background: #0a0e1a;
     }
 
     ::-webkit-scrollbar-thumb {
-      background: #334155;
-      border-radius: 4px;
+      background: #1e293b;
+      border-radius: 5px;
+      border: 2px solid #0a0e1a;
     }
 
     ::-webkit-scrollbar-thumb:hover {
-      background: #475569;
+      background: #334155;
     }
 
     /* Focus visible ring */
     *:focus-visible {
-      outline: 2px solid #3b82f6;
+      outline: 2px solid #6366f1;
       outline-offset: 2px;
     }
 
     .glass {
-      background: rgba(15, 23, 42, 0.6);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+      background: rgba(15, 23, 42, 0.55);
+      backdrop-filter: blur(16px) saturate(140%);
+      -webkit-backdrop-filter: blur(16px) saturate(140%);
+    }
+
+    /* Hide scrollbar for horizontal filter scroll on mobile */
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* Larger touch targets on mobile */
+    @media (max-width: 640px) {
+      .filter-chip {
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+      }
+    }
+
+    /* Card click affordance */
+    .card-clickable:focus-visible {
+      outline: 2px solid #6366f1;
+      outline-offset: 2px;
     }
 
     /* Utility for fade-in animation */
@@ -182,23 +236,23 @@
 <body class="font-sans antialiased text-slate-100 min-h-screen flex flex-col">
 
   <!-- Header -->
-  <header class="fixed top-0 left-0 right-0 z-40 bg-slate-950/80 backdrop-blur-md border-b border-white/10">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+  <header class="fixed top-0 left-0 right-0 z-40 bg-slate-950/85 backdrop-blur-xl border-b border-white/[0.08]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-16 gap-4">
         <a href="#" class="flex items-center gap-3 min-w-0" onclick="window.scrollTo({ top: 0, behavior: 'smooth' }); return false;">
-          <img src="my_flag_round.svg" alt="Malaysia Flag" class="w-9 h-9 rounded-full shadow-lg shrink-0" />
+          <img src="icon-192x192.png" alt="MY-HamFreq logo — Malaysian Amateur Radio Frequency Database" width="36" height="36" class="w-9 h-9 rounded-lg shadow-lg shrink-0" />
           <div class="hidden sm:block min-w-0">
-            <div class="font-bold text-white truncate tracking-tight">MY-HamFreq</div>
-            <div class="text-[10px] text-slate-400 uppercase tracking-wider truncate">Amateur Radio Database</div>
+            <div class="font-heading font-bold text-white truncate tracking-tight text-[15px] leading-tight">MY-HamFreq</div>
+            <div class="text-[10px] text-slate-500 uppercase tracking-[0.12em] truncate font-medium">Amateur Radio Database</div>
           </div>
         </a>
 
         <div class="flex items-center gap-2 sm:gap-3">
-          <nav class="hidden md:flex items-center gap-1 text-sm" aria-label="Main navigation">
-            <a href="faq.html" class="px-3 py-2 rounded-lg text-slate-400 hover:text-white hover:bg-white/5 transition-colors">FAQ</a>
-            <a href="chirp-guide.html" class="px-3 py-2 rounded-lg text-slate-400 hover:text-white hover:bg-white/5 transition-colors">CHIRP Guide</a>
-            <a href="bands-guide.html" class="px-3 py-2 rounded-lg text-slate-400 hover:text-white hover:bg-white/5 transition-colors">Bands</a>
-            <a href="about.html" class="px-3 py-2 rounded-lg text-slate-400 hover:text-white hover:bg-white/5 transition-colors">About</a>
+          <nav class="hidden md:flex items-center gap-0.5 text-sm" aria-label="Main navigation">
+            <a href="faq.html" class="px-3 py-2 rounded-lg text-slate-400 hover:text-white hover:bg-white/5 transition-colors font-medium">FAQ</a>
+            <a href="chirp-guide.html" class="px-3 py-2 rounded-lg text-slate-400 hover:text-white hover:bg-white/5 transition-colors font-medium">CHIRP Guide</a>
+            <a href="bands-guide.html" class="px-3 py-2 rounded-lg text-slate-400 hover:text-white hover:bg-white/5 transition-colors font-medium">Bands</a>
+            <a href="about.html" class="px-3 py-2 rounded-lg text-slate-400 hover:text-white hover:bg-white/5 transition-colors font-medium">About</a>
           </nav>
 
           <button id="installBtn" class="hidden items-center gap-2 px-3 py-2 rounded-lg bg-primary-600/10 border border-primary-600/30 text-primary-400 hover:bg-primary-600/20 hover:text-primary-300 transition-colors text-sm font-medium" aria-label="Install app">
@@ -215,34 +269,56 @@
     </div>
   </header>
 
-  <main class="flex-1 max-w-6xl w-full mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-16">
+  <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-16">
     <!-- Hero -->
     <section class="text-center mb-10 animate-fade-in-up">
-      <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-4">
+      <h1 class="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tightest mb-4 leading-[1.1]">
         Malaysian Amateur Radio <br class="hidden md:block" /> Frequency Database
       </h1>
-      <p class="text-slate-400 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+      <p class="text-slate-400 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed font-light">
         A curated, searchable collection of simplex, repeater, and PMR446 frequencies for Malaysian operators. Ready for CHIRP and field use.
       </p>
+
+      <!-- Social sharing -->
+      <div class="flex items-center justify-center gap-2 mt-6" aria-label="Share this page">
+        <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Ffrequency.hamradio.my&text=Malaysian%20Amateur%20Radio%20Frequency%20Database%20by%20%409M2PJU" target="_blank" rel="noopener" class="w-9 h-9 rounded-lg bg-slate-900/60 border border-white/10 hover:border-sky-500/30 hover:text-sky-400 text-slate-400 transition-colors flex items-center justify-center" title="Share on X / Twitter" aria-label="Share on X / Twitter">
+          <i class="fa-brands fa-x-twitter"></i>
+        </a>
+        <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ffrequency.hamradio.my" target="_blank" rel="noopener" class="w-9 h-9 rounded-lg bg-slate-900/60 border border-white/10 hover:border-blue-500/30 hover:text-blue-400 text-slate-400 transition-colors flex items-center justify-center" title="Share on Facebook" aria-label="Share on Facebook">
+          <i class="fa-brands fa-facebook-f"></i>
+        </a>
+        <a href="https://wa.me/?text=Malaysian%20Amateur%20Radio%20Frequency%20Database%20https%3A%2F%2Ffrequency.hamradio.my" target="_blank" rel="noopener" class="w-9 h-9 rounded-lg bg-slate-900/60 border border-white/10 hover:border-emerald-500/30 hover:text-emerald-400 text-slate-400 transition-colors flex items-center justify-center" title="Share on WhatsApp" aria-label="Share on WhatsApp">
+          <i class="fa-brands fa-whatsapp"></i>
+        </a>
+        <a href="https://t.me/share/url?url=https%3A%2F%2Ffrequency.hamradio.my&text=Malaysian%20Amateur%20Radio%20Frequency%20Database" target="_blank" rel="noopener" class="w-9 h-9 rounded-lg bg-slate-900/60 border border-white/10 hover:border-sky-400/30 hover:text-sky-400 text-slate-400 transition-colors flex items-center justify-center" title="Share on Telegram" aria-label="Share on Telegram">
+          <i class="fa-brands fa-telegram"></i>
+        </a>
+        <a href="https://www.reddit.com/submit?url=https%3A%2F%2Ffrequency.hamradio.my&title=Malaysian%20Amateur%20Radio%20Frequency%20Database" target="_blank" rel="noopener" class="w-9 h-9 rounded-lg bg-slate-900/60 border border-white/10 hover:border-orange-500/30 hover:text-orange-400 text-slate-400 transition-colors flex items-center justify-center" title="Share on Reddit" aria-label="Share on Reddit">
+          <i class="fa-brands fa-reddit-alien"></i>
+        </a>
+        <button id="copyShareLink" class="w-9 h-9 rounded-lg bg-slate-900/60 border border-white/10 hover:border-primary-500/30 hover:text-primary-400 text-slate-400 transition-colors flex items-center justify-center" title="Copy link" aria-label="Copy link to share">
+          <i class="fa-solid fa-link"></i>
+        </button>
+      </div>
     </section>
 
     <!-- Stats -->
     <section class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mb-8 animate-fade-in-up" style="animation-delay: 0.05s">
-      <div class="glass rounded-xl p-4 text-center border border-white/10 bg-slate-900/60">
-        <div class="text-2xl sm:text-3xl font-bold text-white" id="stat-total">-</div>
-        <div class="text-xs text-slate-500 uppercase tracking-wider font-medium mt-1">Total</div>
+      <div class="glass rounded-xl p-4 text-center border border-white/[0.06]">
+        <div class="font-heading text-2xl sm:text-3xl font-bold text-white" id="stat-total">-</div>
+        <div class="text-[10px] text-slate-500 uppercase tracking-[0.12em] font-semibold mt-1.5">Total</div>
       </div>
-      <div class="glass rounded-xl p-4 text-center border border-white/10 bg-slate-900/60">
-        <div class="text-2xl sm:text-3xl font-bold text-emerald-400" id="stat-simplex">-</div>
-        <div class="text-xs text-slate-500 uppercase tracking-wider font-medium mt-1">Simplex</div>
+      <div class="glass rounded-xl p-4 text-center border border-white/[0.06]">
+        <div class="font-heading text-2xl sm:text-3xl font-bold text-emerald-400" id="stat-simplex">-</div>
+        <div class="text-[10px] text-slate-500 uppercase tracking-[0.12em] font-semibold mt-1.5">Simplex</div>
       </div>
-      <div class="glass rounded-xl p-4 text-center border border-white/10 bg-slate-900/60">
-        <div class="text-2xl sm:text-3xl font-bold text-primary-400" id="stat-repeater">-</div>
-        <div class="text-xs text-slate-500 uppercase tracking-wider font-medium mt-1">Repeaters</div>
+      <div class="glass rounded-xl p-4 text-center border border-white/[0.06]">
+        <div class="font-heading text-2xl sm:text-3xl font-bold text-primary-400" id="stat-repeater">-</div>
+        <div class="text-[10px] text-slate-500 uppercase tracking-[0.12em] font-semibold mt-1.5">Repeaters</div>
       </div>
-      <div class="glass rounded-xl p-4 text-center border border-white/10 bg-slate-900/60">
-        <div class="text-2xl sm:text-3xl font-bold text-amber-400" id="stat-pmr">-</div>
-        <div class="text-xs text-slate-500 uppercase tracking-wider font-medium mt-1">PMR / LPD</div>
+      <div class="glass rounded-xl p-4 text-center border border-white/[0.06]">
+        <div class="font-heading text-2xl sm:text-3xl font-bold text-amber-400" id="stat-pmr">-</div>
+        <div class="text-[10px] text-slate-500 uppercase tracking-[0.12em] font-semibold mt-1.5">PMR / LPD</div>
       </div>
     </section>
 
@@ -267,12 +343,12 @@
           </div>
 
           <!-- Filters -->
-          <div class="flex flex-wrap items-center gap-2" id="filters">
-            <button class="filter-chip active px-3 py-1.5 rounded-lg text-xs font-semibold border transition-all" data-filter="all">All</button>
-            <button class="filter-chip px-3 py-1.5 rounded-lg text-xs font-semibold border transition-all" data-filter="VHF">VHF</button>
-            <button class="filter-chip px-3 py-1.5 rounded-lg text-xs font-semibold border transition-all" data-filter="UHF">UHF</button>
-            <button class="filter-chip px-3 py-1.5 rounded-lg text-xs font-semibold border transition-all" data-filter="Simplex">Simplex</button>
-            <button class="filter-chip px-3 py-1.5 rounded-lg text-xs font-semibold border transition-all" data-filter="Repeaters">Repeaters</button>
+          <div class="flex items-center gap-2 overflow-x-auto no-scrollbar -mx-1 px-1 lg:overflow-visible lg:flex-wrap" id="filters">
+            <button class="filter-chip active px-3 py-1.5 rounded-lg text-xs font-semibold border transition-all whitespace-nowrap shrink-0" data-filter="all">All</button>
+            <button class="filter-chip px-3 py-1.5 rounded-lg text-xs font-semibold border transition-all whitespace-nowrap shrink-0" data-filter="VHF">VHF</button>
+            <button class="filter-chip px-3 py-1.5 rounded-lg text-xs font-semibold border transition-all whitespace-nowrap shrink-0" data-filter="UHF">UHF</button>
+            <button class="filter-chip px-3 py-1.5 rounded-lg text-xs font-semibold border transition-all whitespace-nowrap shrink-0" data-filter="Simplex">Simplex</button>
+            <button class="filter-chip px-3 py-1.5 rounded-lg text-xs font-semibold border transition-all whitespace-nowrap shrink-0" data-filter="Repeaters">Repeaters</button>
           </div>
 
           <!-- Actions -->
@@ -314,42 +390,42 @@
 
     <!-- Guides & Resources (SEO: internal linking + keyword-rich content) -->
     <section class="mt-12 animate-fade-in-up" style="animation-delay: 0.25s" aria-label="Guides and resources">
-      <h2 class="text-xl font-bold text-white mb-6 text-center">Guides &amp; Resources</h2>
+      <h2 class="font-heading text-xl font-bold text-white mb-6 text-center tracking-tight">Guides &amp; Resources</h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <a href="chirp-guide.html" class="group glass rounded-xl p-5 border border-white/10 hover:border-primary-500/30 transition-all hover:-translate-y-0.5">
+        <a href="chirp-guide.html" class="group glass rounded-xl p-5 border border-white/[0.06] hover:border-primary-500/20 transition-all hover:-translate-y-0.5">
           <div class="w-10 h-10 rounded-lg bg-primary-500/10 border border-primary-500/20 flex items-center justify-center mb-3">
             <i class="fa-solid fa-code text-primary-400"></i>
           </div>
-          <h3 class="font-bold text-white text-sm mb-1 group-hover:text-primary-300 transition-colors">CHIRP Programming Guide</h3>
-          <p class="text-xs text-slate-500">Step-by-step guide to program Malaysian frequencies into your radio using CHIRP software.</p>
+          <h3 class="font-heading font-bold text-white text-sm mb-1 group-hover:text-primary-300 transition-colors tracking-tight">CHIRP Programming Guide</h3>
+          <p class="text-xs text-slate-500 leading-relaxed">Step-by-step guide to program Malaysian frequencies into your radio using CHIRP software.</p>
         </a>
-        <a href="pmr446-guide.html" class="group glass rounded-xl p-5 border border-white/10 hover:border-amber-500/30 transition-all hover:-translate-y-0.5">
+        <a href="pmr446-guide.html" class="group glass rounded-xl p-5 border border-white/[0.06] hover:border-amber-500/20 transition-all hover:-translate-y-0.5">
           <div class="w-10 h-10 rounded-lg bg-amber-500/10 border border-amber-500/20 flex items-center justify-center mb-3">
             <i class="fa-solid fa-walkie-talkie text-amber-400"></i>
           </div>
-          <h3 class="font-bold text-white text-sm mb-1 group-hover:text-amber-300 transition-colors">PMR446 Guide</h3>
-          <p class="text-xs text-slate-500">All 16 license-free PMR446 channels, power limits, and regulations for Malaysia.</p>
+          <h3 class="font-heading font-bold text-white text-sm mb-1 group-hover:text-amber-300 transition-colors tracking-tight">PMR446 Guide</h3>
+          <p class="text-xs text-slate-500 leading-relaxed">All 16 license-free PMR446 channels, power limits, and regulations for Malaysia.</p>
         </a>
-        <a href="bands-guide.html" class="group glass rounded-xl p-5 border border-white/10 hover:border-emerald-500/30 transition-all hover:-translate-y-0.5">
+        <a href="bands-guide.html" class="group glass rounded-xl p-5 border border-white/[0.06] hover:border-emerald-500/20 transition-all hover:-translate-y-0.5">
           <div class="w-10 h-10 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mb-3">
             <i class="fa-solid fa-tower-broadcast text-emerald-400"></i>
           </div>
-          <h3 class="font-bold text-white text-sm mb-1 group-hover:text-emerald-300 transition-colors">Bands Guide</h3>
-          <p class="text-xs text-slate-500">Complete guide to VHF, UHF, and HF amateur radio bands in Malaysia.</p>
+          <h3 class="font-heading font-bold text-white text-sm mb-1 group-hover:text-emerald-300 transition-colors tracking-tight">Bands Guide</h3>
+          <p class="text-xs text-slate-500 leading-relaxed">Complete guide to VHF, UHF, and HF amateur radio bands in Malaysia.</p>
         </a>
-        <a href="faq.html" class="group glass rounded-xl p-5 border border-white/10 hover:border-rose-500/30 transition-all hover:-translate-y-0.5">
+        <a href="faq.html" class="group glass rounded-xl p-5 border border-white/[0.06] hover:border-rose-500/20 transition-all hover:-translate-y-0.5">
           <div class="w-10 h-10 rounded-lg bg-rose-500/10 border border-rose-500/20 flex items-center justify-center mb-3">
             <i class="fa-solid fa-circle-question text-rose-400"></i>
           </div>
-          <h3 class="font-bold text-white text-sm mb-1 group-hover:text-rose-300 transition-colors">FAQ</h3>
-          <p class="text-xs text-slate-500">Frequently asked questions about Malaysian ham radio, repeaters, and licensing.</p>
+          <h3 class="font-heading font-bold text-white text-sm mb-1 group-hover:text-rose-300 transition-colors tracking-tight">FAQ</h3>
+          <p class="text-xs text-slate-500 leading-relaxed">Frequently asked questions about Malaysian ham radio, repeaters, and licensing.</p>
         </a>
       </div>
     </section>
   </main>
 
-  <footer class="border-t border-white/10 bg-slate-950/50 py-8">
-    <div class="max-w-6xl mx-auto px-4 text-center text-sm text-slate-500">
+  <footer class="border-t border-white/[0.06] bg-slate-950/40 py-8">
+    <div class="max-w-7xl mx-auto px-4 text-center text-sm text-slate-500">
       <nav class="flex flex-wrap justify-center gap-x-4 gap-y-2 mb-4" aria-label="Footer navigation">
         <a href="index.html" class="hover:text-primary-400 transition-colors">Frequencies</a>
         <a href="faq.html" class="hover:text-primary-400 transition-colors">FAQ</a>
@@ -358,10 +434,10 @@
         <a href="bands-guide.html" class="hover:text-primary-400 transition-colors">Bands Guide</a>
         <a href="about.html" class="hover:text-primary-400 transition-colors">About</a>
       </nav>
-      <p>&copy; <span id="year"></span> Malaysian Amateur Radio Frequency Database.</p>
-      <p class="mt-1">
+      <p class="text-slate-600">&copy; <span id="year"></span> Malaysian Amateur Radio Frequency Database.</p>
+      <p class="mt-1 text-slate-600">
         Made for Malaysia by
-        <a href="https://hamradio.my" class="text-primary-400 hover:text-primary-300 transition-colors">9M2PJU</a>.
+        <a href="https://hamradio.my" class="text-primary-400 hover:text-primary-300 transition-colors font-medium">9M2PJU</a>.
       </p>
     </div>
   </footer>
@@ -385,13 +461,53 @@
         </p>
 
         <div class="bg-white p-3 rounded-xl mx-auto w-48 h-48 shadow-lg mb-4">
-          <img src="donate_qr.png" alt="DuitNow QR code" class="w-full h-full object-contain" loading="lazy" />
+          <img src="donate_qr.png" alt="DuitNow QR code for donations to 9M2PJU" width="192" height="192" class="w-full h-full object-contain" loading="lazy" />
         </div>
 
         <p class="text-[10px] text-slate-500 font-mono">Scan with any banking app or TNG eWallet</p>
       </div>
     </div>
   </div>
+
+  <!-- Map Modal -->
+  <div id="mapModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/70 backdrop-blur-sm"
+    role="dialog" aria-modal="true" aria-labelledby="mapTitle">
+    <div class="relative bg-slate-900 border border-white/10 rounded-2xl w-full max-w-2xl mx-2 sm:mx-4 shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+      <button id="mapCloseBtn" class="absolute top-3 right-3 z-10 w-9 h-9 rounded-lg bg-slate-950/80 hover:bg-slate-800 text-slate-400 hover:text-white transition-colors flex items-center justify-center" aria-label="Close map">
+        <i class="fa-solid fa-xmark text-lg"></i>
+      </button>
+
+      <div class="p-4 sm:p-5 border-b border-white/10 shrink-0">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-lg bg-primary-500/10 border border-primary-500/20 flex items-center justify-center shrink-0">
+            <i class="fa-solid fa-tower-broadcast text-primary-400"></i>
+          </div>
+          <div class="min-w-0 flex-1">
+            <h3 id="mapTitle" class="text-lg font-bold text-white truncate">Repeater Location</h3>
+            <p id="mapSubtitle" class="text-xs text-slate-400 truncate font-mono"></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-slate-950 flex-1 min-h-[300px] sm:min-h-[400px] relative">
+        <iframe id="mapFrame" class="w-full h-full border-0" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Repeater map"></iframe>
+      </div>
+
+      <div class="p-3 sm:p-4 border-t border-white/10 shrink-0 flex flex-wrap items-center justify-between gap-2">
+        <div id="mapCoords" class="text-[11px] text-slate-500 font-mono"></div>
+        <a id="mapGmapsLink" href="#" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-primary-600/10 border border-primary-600/30 text-primary-400 hover:bg-primary-600/20 text-xs font-medium transition-colors">
+          <i class="fa-solid fa-up-right-from-square"></i>
+          Open in Google Maps
+        </a>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
 
 
 
@@ -2334,6 +2450,32 @@
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Malaysian Amateur Radio Frequency Database",
+  "url": "https://frequency.hamradio.my/",
+  "description": "Curated database of 206 simplex, repeater, and PMR frequencies for Malaysian amateur radio operators. CHIRP-compatible CSV download.",
+  "inLanguage": "en",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "Malaysian Amateur Radio Frequency Database",
+    "url": "https://frequency.hamradio.my/"
+  },
+  "about": {
+    "@type": "Thing",
+    "name": "Amateur radio in Malaysia",
+    "description": "Frequencies, repeaters, and PMR446 channels for Malaysian amateur radio operators"
+  },
+  "primaryImageOfPage": {
+    "@type": "ImageObject",
+    "url": "https://frequency.hamradio.my/icon-512x512.png",
+    "width": 512,
+    "height": 512
+  }
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
   "@type": "WebSite",
   "name": "Malaysian Amateur Radio Frequency Database",
   "url": "https://frequency.hamradio.my/",
@@ -2870,12 +3012,19 @@
       });
     }
 
-    function getUserLocation() {
-      geoBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin text-primary-400"></i> <span class="hidden sm:inline">Locating...</span>';
+    function getUserLocation(silent) {
+      if (silent) {
+        // Auto-request: only if not previously denied and user hasn't dismissed
+        if (localStorage.getItem('hamfreq_geo_dismissed') === '1') return;
+      } else {
+        geoBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin text-primary-400"></i> <span class="hidden sm:inline">Locating...</span>';
+      }
 
       if (!navigator.geolocation) {
-        showToast('Geolocation is not supported by this browser.', 'error');
-        resetGeoBtn();
+        if (!silent) {
+          showToast('Geolocation is not supported by this browser.', 'error');
+          resetGeoBtn();
+        }
         return;
       }
 
@@ -2887,15 +3036,20 @@
           geoBtn.innerHTML = '<i class="fa-solid fa-location-dot text-emerald-400"></i> <span class="hidden sm:inline">Sorted by Distance</span>';
           geoBtn.classList.add('text-emerald-400');
           render(getFilteredRows());
-          showToast('Location set. Results sorted by distance.', 'success');
+          if (!silent) showToast('Location set. Results sorted by distance.', 'success');
         },
         (error) => {
-          let msg = 'Unable to get location';
-          if (error.code === 1) msg = 'Location permission denied';
-          else if (error.code === 2) msg = 'Location unavailable';
-          else if (error.code === 3) msg = 'Location request timed out';
-          showToast(msg, 'error');
-          resetGeoBtn();
+          if (silent) {
+            // Remember dismissal so we don't auto-prompt again on every visit
+            if (error.code === 1) localStorage.setItem('hamfreq_geo_dismissed', '1');
+          } else {
+            let msg = 'Unable to get location';
+            if (error.code === 1) msg = 'Location permission denied';
+            else if (error.code === 2) msg = 'Location unavailable';
+            else if (error.code === 3) msg = 'Location request timed out';
+            showToast(msg, 'error');
+            resetGeoBtn();
+          }
         },
         { timeout: 10000, maximumAge: 300000 }
       );
@@ -2917,7 +3071,8 @@
         ? `<span class="inline-flex items-center gap-1 text-[10px] font-mono text-primary-300 bg-primary-500/10 px-2 py-0.5 rounded border border-primary-500/20"><i class="fa-solid fa-location-arrow"></i>${r.distance.toFixed(1)} km</span>`
         : '';
       const locationText = escapeHtml(r.Comment || r.Location || 'No location info');
-      const mapsLink = r.Latitude && r.Longitude
+      const hasCoords = r.Latitude && r.Longitude && !isNaN(parseFloat(r.Latitude)) && !isNaN(parseFloat(r.Longitude));
+      const mapsLink = hasCoords
         ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(r.Latitude + ',' + r.Longitude)}`
         : null;
 
@@ -2928,28 +3083,40 @@
         r.Tone && r.rToneFreq ? `${r.Tone} ${r.rToneFreq}` : r.Tone || 'No tone'
       ].join(' | '));
 
+      // Make the whole card clickable to open the map modal when coords exist
+      const cardClickAttr = hasCoords
+        ? `data-lat="${escapeHtml(r.Latitude)}" data-lon="${escapeHtml(r.Longitude)}" data-name="${escapeHtml(r.Name || '')}" data-loc="${escapeHtml(r.Comment || r.Location || '')}" data-freq="${freq}"`
+        : '';
+      const cardClass = hasCoords
+        ? 'group rounded-xl border border-white/[0.06] bg-slate-900/40 hover:bg-slate-900/70 hover:border-primary-500/20 transition-all p-5 shadow-subtle hover:shadow-card hover:-translate-y-0.5 cursor-pointer card-clickable'
+        : 'group rounded-xl border border-white/[0.06] bg-slate-900/40 hover:bg-slate-900/70 transition-all p-5 shadow-subtle hover:shadow-card hover:-translate-y-0.5';
+
+      const mapHint = hasCoords
+        ? `<div class="mt-3 pt-3 border-t border-white/5 flex items-center gap-1.5 text-[11px] text-slate-500 group-hover:text-primary-400 transition-colors"><i class="fa-solid fa-map-location-dot"></i>Click card to view map</div>`
+        : '';
+
       return `
-        <div class="group rounded-xl border border-white/10 bg-slate-900/60 hover:bg-slate-800/60 transition-all p-5 shadow-sm hover:shadow-lg hover:-translate-y-0.5">
+        <div class="${cardClass}" ${cardClickAttr}>
           <div class="flex items-start justify-between gap-3 mb-3">
             <div class="min-w-0 flex-1">
               <div class="flex flex-wrap items-center gap-2 mb-1">
-                <h3 class="font-bold text-white truncate text-lg">${escapeHtml(r.Name || 'Unknown')}</h3>
+                <h3 class="font-heading font-bold text-white truncate text-lg tracking-tight">${escapeHtml(r.Name || 'Unknown')}</h3>
                 ${distHtml}
               </div>
               <div class="text-xs text-slate-500 truncate font-mono">
-                ${mapsLink ? `<a href="${mapsLink}" target="_blank" rel="noopener" class="hover:text-primary-400 transition-colors"><i class="fa-solid fa-location-dot mr-1"></i>${locationText}</a>` : `<i class="fa-solid fa-location-dot mr-1"></i>${locationText}`}
+                ${mapsLink ? `<a href="${mapsLink}" target="_blank" rel="noopener" class="hover:text-primary-400 transition-colors" onclick="event.stopPropagation()"><i class="fa-solid fa-location-dot mr-1"></i>${locationText}</a>` : `<i class="fa-solid fa-location-dot mr-1"></i>${locationText}`}
               </div>
             </div>
             <div class="shrink-0">${bandBadge(r.Frequency)}</div>
           </div>
 
-          <div class="flex items-center gap-3 my-4 bg-slate-950/50 rounded-lg p-3 border border-white/5">
-            <div class="text-2xl font-mono font-bold text-white tracking-tight">${freq} <span class="text-sm font-sans font-normal text-slate-500">MHz</span></div>
+          <div class="flex items-center gap-3 my-4 bg-slate-950/40 rounded-lg p-3 border border-white/[0.04]">
+            <div class="font-heading text-2xl font-mono font-bold text-white tracking-tight">${freq} <span class="text-sm font-sans font-normal text-slate-500">MHz</span></div>
             <div class="ml-auto flex items-center gap-1">
-              <button onclick="copyToClipboard('${freq}', 'Frequency')" class="w-8 h-8 rounded-lg bg-white/5 hover:bg-primary-500/20 text-slate-400 hover:text-primary-400 transition-colors flex items-center justify-center" title="Copy frequency" aria-label="Copy frequency">
+              <button onclick="copyToClipboard('${freq}', 'Frequency'); event.stopPropagation();" class="w-8 h-8 rounded-lg bg-white/5 hover:bg-primary-500/20 text-slate-400 hover:text-primary-400 transition-colors flex items-center justify-center" title="Copy frequency" aria-label="Copy frequency">
                 <i class="fa-regular fa-copy"></i>
               </button>
-              <button onclick="copyToClipboard('${escapeHtml(details)}', 'Channel details')" class="w-8 h-8 rounded-lg bg-white/5 hover:bg-primary-500/20 text-slate-400 hover:text-primary-400 transition-colors flex items-center justify-center" title="Copy channel details" aria-label="Copy channel details">
+              <button onclick="copyToClipboard('${escapeHtml(details)}', 'Channel details'); event.stopPropagation();" class="w-8 h-8 rounded-lg bg-white/5 hover:bg-primary-500/20 text-slate-400 hover:text-primary-400 transition-colors flex items-center justify-center" title="Copy channel details" aria-label="Copy channel details">
                 <i class="fa-solid fa-share-nodes"></i>
               </button>
             </div>
@@ -2973,6 +3140,7 @@
               <span class="font-mono text-slate-300">${escapeHtml(r.Power || '-')}</span>
             </div>
           </div>
+          ${mapHint}
         </div>
       `;
     }
@@ -3041,11 +3209,11 @@
       return `
         <section class="mb-10 animate-fade-in-up">
           <div class="flex items-center gap-3 mb-4">
-            <h2 class="text-xl font-bold text-white">${title}</h2>
-            <span class="px-2 py-0.5 rounded-md text-xs font-mono bg-slate-800 text-slate-400 border border-white/10">${rows.length}</span>
-            <div class="h-px bg-white/10 flex-grow"></div>
+            <h2 class="font-heading text-xl font-bold text-white tracking-tight">${title}</h2>
+            <span class="px-2 py-0.5 rounded-md text-xs font-mono bg-slate-800/80 text-slate-400 border border-white/[0.06]">${rows.length}</span>
+            <div class="h-px bg-white/[0.06] flex-grow"></div>
           </div>
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
             ${rows.map(r => createCard(r)).join('')}
           </div>
         </section>
@@ -3146,6 +3314,7 @@
 
       output.innerHTML = html;
       updateStats(rows);
+      attachCardClickHandlers();
 
       const clearBtn = document.getElementById('clearFiltersEmpty');
       if (clearBtn) {
@@ -3156,17 +3325,84 @@
       }
     }
 
+    // ===== Map Modal =====
+    const mapModal = document.getElementById('mapModal');
+    const mapCloseBtn = document.getElementById('mapCloseBtn');
+    const mapFrame = document.getElementById('mapFrame');
+    const mapTitle = document.getElementById('mapTitle');
+    const mapSubtitle = document.getElementById('mapSubtitle');
+    const mapCoords = document.getElementById('mapCoords');
+    const mapGmapsLink = document.getElementById('mapGmapsLink');
+
+    function openMap(lat, lon, name, loc, freq) {
+      const latNum = parseFloat(lat);
+      const lonNum = parseFloat(lon);
+      if (isNaN(latNum) || isNaN(lonNum)) return;
+
+      mapTitle.textContent = name || 'Repeater Location';
+      mapSubtitle.textContent = loc ? `${loc} · ${freq} MHz` : `${freq} MHz`;
+      mapCoords.textContent = `${latNum.toFixed(5)}, ${lonNum.toFixed(5)}`;
+
+      // OpenStreetMap embed (no API key required)
+      const delta = 0.01;
+      const bbox = `${lonNum - delta}%2C${latNum - delta}%2C${lonNum + delta}%2C${latNum + delta}`;
+      mapFrame.src = `https://www.openstreetmap.org/export/embed.html?bbox=${bbox}&layer=mapnik&marker=${latNum}%2C${lonNum}`;
+
+      mapGmapsLink.href = `https://www.google.com/maps/search/?api=1&query=${latNum},${lonNum}`;
+
+      mapModal.classList.remove('hidden');
+      mapModal.classList.add('flex');
+      mapCloseBtn.focus();
+    }
+
+    function closeMap() {
+      mapModal.classList.add('hidden');
+      mapModal.classList.remove('flex');
+      mapFrame.src = ''; // stop loading when closed
+    }
+
+    function attachCardClickHandlers() {
+      document.querySelectorAll('.card-clickable').forEach(card => {
+        card.addEventListener('click', (e) => {
+          // Don't trigger if clicking on a link or button inside the card
+          if (e.target.closest('a, button')) return;
+          openMap(
+            card.dataset.lat,
+            card.dataset.lon,
+            card.dataset.name,
+            card.dataset.loc,
+            card.dataset.freq
+          );
+        });
+        // Keyboard accessibility: Enter / Space opens map
+        card.setAttribute('tabindex', '0');
+        card.setAttribute('role', 'button');
+        card.setAttribute('aria-label', `${card.dataset.name} — click to view location on map`);
+        card.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            openMap(card.dataset.lat, card.dataset.lon, card.dataset.name, card.dataset.loc, card.dataset.freq);
+          }
+        });
+      });
+    }
+
+    mapCloseBtn.addEventListener('click', closeMap);
+    mapModal.addEventListener('click', (e) => {
+      if (e.target === mapModal) closeMap();
+    });
+
     // ===== Filter UI =====
     function setFilter(filter) {
       currentFilter = filter;
       document.querySelectorAll('.filter-chip').forEach(btn => {
         const isActive = btn.dataset.filter === filter;
         if (isActive) {
-          btn.classList.add('bg-primary-500/10', 'text-primary-400', 'border-primary-500/30');
-          btn.classList.remove('bg-slate-800', 'text-slate-400', 'border-white/10', 'hover:bg-slate-700');
+          btn.classList.add('bg-primary-500/15', 'text-primary-300', 'border-primary-500/25');
+          btn.classList.remove('bg-slate-800/60', 'text-slate-400', 'border-white/[0.06]', 'hover:bg-slate-800', 'hover:text-slate-200');
         } else {
-          btn.classList.remove('bg-primary-500/10', 'text-primary-400', 'border-primary-500/30');
-          btn.classList.add('bg-slate-800', 'text-slate-400', 'border-white/10', 'hover:bg-slate-700');
+          btn.classList.remove('bg-primary-500/15', 'text-primary-300', 'border-primary-500/25');
+          btn.classList.add('bg-slate-800/60', 'text-slate-400', 'border-white/[0.06]', 'hover:bg-slate-800', 'hover:text-slate-200');
         }
       });
       render(getFilteredRows());
@@ -3247,8 +3483,12 @@
     });
 
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && !donationModal.classList.contains('hidden')) {
-        closeDonation();
+      if (e.key === 'Escape') {
+        if (!mapModal.classList.contains('hidden')) {
+          closeMap();
+        } else if (!donationModal.classList.contains('hidden')) {
+          closeDonation();
+        }
       }
     });
 
@@ -3295,6 +3535,14 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
+    // ===== Copy Share Link =====
+    const copyShareLink = document.getElementById('copyShareLink');
+    if (copyShareLink) {
+      copyShareLink.addEventListener('click', () => {
+        copyToClipboard('https://frequency.hamradio.my', 'Share link');
+      });
+    }
+
     // ===== Load CSV =====
     Papa.parse('9M2PJU.csv', {
       download: true,
@@ -3306,6 +3554,8 @@
         }
         allRows = result.data.filter(x => x.Name || x.Frequency);
         render(allRows);
+        // Auto-request location silently to sort by distance on first visit
+        getUserLocation(true);
       },
       error: (error) => {
         console.error('CSV load failed:', error);

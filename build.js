@@ -185,6 +185,31 @@ function generateJsonLd(rows) {
     return o !== 0 && !(f >= 446 && f <= 446.2);
   });
 
+  const webPage = {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    'name': 'Malaysian Amateur Radio Frequency Database',
+    'url': `${BASE_URL}/`,
+    'description': `Curated database of ${rows.length} simplex, repeater, and PMR frequencies for Malaysian amateur radio operators. CHIRP-compatible CSV download.`,
+    'inLanguage': 'en',
+    'isPartOf': {
+      '@type': 'WebSite',
+      'name': 'Malaysian Amateur Radio Frequency Database',
+      'url': `${BASE_URL}/`
+    },
+    'about': {
+      '@type': 'Thing',
+      'name': 'Amateur radio in Malaysia',
+      'description': 'Frequencies, repeaters, and PMR446 channels for Malaysian amateur radio operators'
+    },
+    'primaryImageOfPage': {
+      '@type': 'ImageObject',
+      'url': `${BASE_URL}/icon-512x512.png`,
+      'width': 512,
+      'height': 512
+    }
+  };
+
   const dataset = {
     '@context': 'https://schema.org',
     '@type': 'Dataset',
@@ -323,21 +348,29 @@ function generateJsonLd(rows) {
     }
   };
 
-  return [website, organization, dataset, faq, itemList];
+  return [webPage, website, organization, dataset, faq, itemList];
 }
 
 // ── Generate sitemap.xml ─────────────────────────────────────────────────
 function generateSitemap(pages) {
   const today = new Date().toISOString().split('T')[0];
-  const urls = pages.map(p => `  <url>
+  const urls = pages.map(p => {
+    const imageTags = (p.images || []).map(img => `    <image:image>
+      <image:loc>${BASE_URL}/${img.src}</image:loc>
+      <image:title>${img.title}</image:title>
+      <image:caption>${img.caption}</image:caption>
+    </image:image>`).join('\n');
+    return `  <url>
     <loc>${BASE_URL}/${p.path}</loc>
     <lastmod>${today}</lastmod>
     <changefreq>${p.freq || 'monthly'}</changefreq>
-    <priority>${p.priority || '0.8'}</priority>
-  </url>`).join('\n');
+    <priority>${p.priority || '0.8'}</priority>${imageTags ? '\n' + imageTags : ''}
+  </url>`;
+  }).join('\n');
 
   return `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 ${urls}
 </urlset>
 `;
@@ -446,8 +479,8 @@ ${jsonLdHtml}
 `;
     // Insert after the twitter:image meta tag
     newHtml = newHtml.replace(
-      '  <meta name="twitter:image" content="https://frequency.hamradio.my/my_flag_round.svg" />',
-      '  <meta name="twitter:image" content="https://frequency.hamradio.my/my_flag_round.svg" />\n' + geoTags
+      '  <meta name="twitter:image" content="https://frequency.hamradio.my/icon-512x512.png" />',
+      '  <meta name="twitter:image" content="https://frequency.hamradio.my/icon-512x512.png" />\n' + geoTags
     );
   }
 
@@ -459,13 +492,17 @@ ${jsonLdHtml}
 buildIndex();
 
 // Generate sitemap with all pages
+const logoImages = [
+  { src: 'icon-512x512.png', title: 'MY-HamFreq Logo', caption: 'Malaysian Amateur Radio Frequency Database logo' },
+  { src: 'icon-192x192.png', title: 'MY-HamFreq Icon', caption: 'Malaysian Amateur Radio Frequency Database icon' }
+];
 const pages = [
-  { path: '', freq: 'weekly', priority: '1.0' },
-  { path: 'faq.html', freq: 'monthly', priority: '0.9' },
-  { path: 'about.html', freq: 'monthly', priority: '0.7' },
-  { path: 'chirp-guide.html', freq: 'monthly', priority: '0.9' },
-  { path: 'pmr446-guide.html', freq: 'monthly', priority: '0.9' },
-  { path: 'bands-guide.html', freq: 'monthly', priority: '0.9' },
+  { path: '', freq: 'weekly', priority: '1.0', images: logoImages },
+  { path: 'faq.html', freq: 'monthly', priority: '0.9', images: logoImages },
+  { path: 'about.html', freq: 'monthly', priority: '0.7', images: logoImages },
+  { path: 'chirp-guide.html', freq: 'monthly', priority: '0.9', images: logoImages },
+  { path: 'pmr446-guide.html', freq: 'monthly', priority: '0.9', images: logoImages },
+  { path: 'bands-guide.html', freq: 'monthly', priority: '0.9', images: logoImages },
 ];
 fs.writeFileSync(SITEMAP_FILE, generateSitemap(pages), 'utf-8');
 console.log(`✓ sitemap.xml updated with ${pages.length} pages`);
