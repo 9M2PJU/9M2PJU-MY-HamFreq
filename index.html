@@ -318,7 +318,7 @@
       </div>
       <div class="glass rounded-xl p-4 text-center border border-white/[0.06]">
         <div class="font-heading text-2xl sm:text-3xl font-bold text-amber-400" id="stat-pmr">-</div>
-        <div class="text-[10px] text-slate-500 uppercase tracking-[0.12em] font-semibold mt-1.5">PMR / LPD</div>
+        <div class="text-[10px] text-slate-500 uppercase tracking-[0.12em] font-semibold mt-1.5">PMR446</div>
       </div>
     </section>
 
@@ -502,6 +502,7 @@
       </div>
     </div>
   </div>
+
 
 
 
@@ -3303,7 +3304,7 @@
 
       let html = '';
       ['Repeaters', 'Simplex', 'PMR'].forEach(cat => {
-        const title = cat === 'PMR' ? 'PMR / LPD (446 MHz)' : cat;
+        const title = cat === 'PMR' ? 'PMR446 (446 MHz)' : cat;
         html += createSection(title, groups[cat]);
       });
 
