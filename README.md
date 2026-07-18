@@ -81,12 +81,6 @@ The database includes repeaters from every Malaysian state:
 
 ---
 
-## Automated Repeater Updates
-
-Repeater frequencies and locations are automatically synced from [RepeaterBook](https://www.repeaterbook.com) on the 1st of each month via a GitHub Actions workflow. The workflow downloads the latest CSV, merges it into `9M2PJU.csv` via `scripts/merge_repeaterbook.js`, regenerates `index.html`, and commits any changes directly to `main`.
-
----
-
 ## License
 
 Licensed under the **GNU Affero General Public License 3.0**. See [LICENSE](LICENSE) for details.
