@@ -5,7 +5,7 @@ name: Update Repeater Data
 # any changes to main.
 #
 # Required repository secret:
-#   REPEATERBOOK_EUID — your RepeaterBook numeric user ID (e.g. 104805).
+#   REPEATERBOOK_EUID - your RepeaterBook numeric user ID (e.g. 104805).
 #     Find it in your RepeaterBook download URL:
 #     https://www.repeaterbook.com/repeaters/downloads/csv/index2.php?euid=<EUID>&func=route
 #
@@ -79,7 +79,7 @@ jobs:
           git add -A
           if git diff --cached --quiet; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
-            echo "No changes detected — repeater data is already up to date."
+            echo "No changes detected - repeater data is already up to date."
           else
             echo "changed=true" >> "$GITHUB_OUTPUT"
             echo "Changes detected:"

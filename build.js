@@ -1,5 +1,5 @@
 /**
- * build.js — Pre-renders CSV frequency data into static HTML for SEO.
+ * build.js - Pre-renders CSV frequency data into static HTML for SEO.
  *
  * Why: The original site loads all frequency data via JavaScript (PapaParse
  * fetching 9M2PJU.csv at runtime). Search engine crawlers that don't execute
@@ -319,7 +319,7 @@ function generateJsonLd(rows) {
     const item = {
       '@type': 'Thing',
       'name': r.Name,
-      'description': `${r.Name} — Malaysian amateur radio repeater at ${freq} MHz${r.Comment ? '. ' + r.Comment : ''}`
+      'description': `${r.Name} - Malaysian amateur radio repeater at ${freq} MHz${r.Comment ? '. ' + r.Comment : ''}`
     };
     return item;
   });
@@ -390,7 +390,7 @@ function buildIndex() {
     .map(data => `  <script type="application/ld+json">\n${JSON.stringify(data, null, 2)}\n  </script>`)
     .join('\n');
 
-  // Build the SEO content section — visible to crawlers, hidden visually
+  // Build the SEO content section - visible to crawlers, hidden visually
   // (JS app replaces #output with interactive content)
   const seoSection = `
   <!-- SEO: Pre-rendered frequency data for search engine crawlers -->

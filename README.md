@@ -8,7 +8,7 @@
 ### The #1 curated frequency database for Malaysian amateur radio operators and PMR users
 </p>
 
-A meticulously curated, open-source collection of **206 Malaysian amateur radio frequencies** — covering simplex, repeaters, APRS, and PMR446 — optimized for modern viewing and seamless programming via CHIRP.
+A meticulously curated, open-source collection of **206 Malaysian amateur radio frequencies** - covering simplex, repeaters, APRS, and PMR446 - optimized for modern viewing and seamless programming via CHIRP.
 
 <p align="center">
   <a href="https://hamradio.my"><img src="https://img.shields.io/badge/Ham%20Radio-9M2PJU-00f3ff?style=for-the-badge&logo=radio&logoColor=black" alt="Ham Radio" /></a>
@@ -25,12 +25,12 @@ A meticulously curated, open-source collection of **206 Malaysian amateur radio 
 
 The website is a Progressive Web App (PWA) with:
 
-- **Searchable interface** — find frequencies by callsign, location, or tone
-- **Geolocation sorting** — find repeaters near you
-- **Card and table views** — flexible browsing
-- **CHIRP CSV download** — program your radio in minutes
-- **Offline support** — works without internet after first visit
-- **Mobile optimized** — designed for field use
+- **Searchable interface** - find frequencies by callsign, location, or tone
+- **Geolocation sorting** - find repeaters near you
+- **Card and table views** - flexible browsing
+- **CHIRP CSV download** - program your radio in minutes
+- **Offline support** - works without internet after first visit
+- **Mobile optimized** - designed for field use
 
 ---
 
@@ -61,31 +61,31 @@ The website is a Progressive Web App (PWA) with:
 
 The database includes repeaters from every Malaysian state:
 
-- **Kuala Lumpur & Selangor** — Bukit Lanjan (9M2RKL, 9M2RKK)
-- **Pahang** — Gunung Ulu Kali, Bukit Brinchang, Cameron Highlands
-- **Penang** — Bukit Bendera (Penang Hill)
-- **Melaka** — Bukit Beruang, Gunung Ledang
-- **Johor** — Gunung Pulai, Johor Bahru
-- **Kedah** — Gunung Jerai, Gunung Keriang
-- **Perak** — Bukit Larut, Lenggong, Taiping
-- **Perlis** — Kangar
-- **Terengganu** — Marang, Besut, Kijal
-- **Kelantan** — Kota Bharu, Tumpat, Gua Musang
-- **Sabah** — Kota Kinabalu, Gunung Kinabalu, Sandakan
-- **Sarawak** — Kuching, Miri, Borneo Highlands
+- **Kuala Lumpur & Selangor** - Bukit Lanjan (9M2RKL, 9M2RKK)
+- **Pahang** - Gunung Ulu Kali, Bukit Brinchang, Cameron Highlands
+- **Penang** - Bukit Bendera (Penang Hill)
+- **Melaka** - Bukit Beruang, Gunung Ledang
+- **Johor** - Gunung Pulai, Johor Bahru
+- **Kedah** - Gunung Jerai, Gunung Keriang
+- **Perak** - Bukit Larut, Lenggong, Taiping
+- **Perlis** - Kangar
+- **Terengganu** - Marang, Besut, Kijal
+- **Kelantan** - Kota Bharu, Tumpat, Gua Musang
+- **Sabah** - Kota Kinabalu, Gunung Kinabalu, Sandakan
+- **Sarawak** - Kuching, Miri, Borneo Highlands
 
 ---
 
 ## Features
 
-- **206 curated frequencies** — verified simplex, repeater, APRS, and PMR446 channels
-- **CHIRP-compatible CSV** — direct import, no manual entry
-- **GPS coordinates** — every repeater includes lat/lon with Google Maps links
-- **CTCSS/DCS tones** — all access tones listed for each repeater
-- **MARTS & ASTRA linking** — network information for linked repeaters
-- **DMR support** — digital repeaters connected to Brandmeister Network
-- **PWA** — installable, works offline, mobile-optimized
-- **Open source** — AGPL-3.0 licensed
+- **206 curated frequencies** - verified simplex, repeater, APRS, and PMR446 channels
+- **CHIRP-compatible CSV** - direct import, no manual entry
+- **GPS coordinates** - every repeater includes lat/lon with Google Maps links
+- **CTCSS/DCS tones** - all access tones listed for each repeater
+- **MARTS & ASTRA linking** - network information for linked repeaters
+- **DMR support** - digital repeaters connected to Brandmeister Network
+- **PWA** - installable, works offline, mobile-optimized
+- **Open source** - AGPL-3.0 licensed
 
 ---
 
@@ -93,7 +93,7 @@ The database includes repeaters from every Malaysian state:
 
 Licensed under the **GNU Affero General Public License 3.0**. See [LICENSE](LICENSE) for details.
 
-Operate with awareness of local amateur radio regulations — this database is for educational and reference use. A valid AROC license is required to transmit on amateur radio bands in Malaysia.
+Operate with awareness of local amateur radio regulations - this database is for educational and reference use. A valid AROC license is required to transmit on amateur radio bands in Malaysia.
 
 ---
 

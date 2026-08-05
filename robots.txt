@@ -14,7 +14,7 @@ Allow: /icon-512x512.png
 Allow: /favicon.ico
 Allow: /assets/
 
-# Block nothing — all content is indexable
+# Block nothing - all content is indexable
 Disallow:
 
 # Sitemaps

@@ -21,8 +21,8 @@
  * If output_csv is omitted, defaults to ./9M2PJU.csv (in repo root).
  *
  * Exit codes:
- *   0 — success (changes may or may not have been made)
- *   1 — usage error / file not found / invalid RepeaterBook CSV
+ *   0 - success (changes may or may not have been made)
+ *   1 - usage error / file not found / invalid RepeaterBook CSV
  *
  * Used by .github/workflows/update-repeaterbook.yml for automated monthly
  * updates, but can also be run locally:
@@ -279,7 +279,7 @@ for (const e of rbEntries) {
   // Determine the name to use for this new entry
   let name = e.call;
   if (existingNames.has(name) || addedNames.has(name)) {
-    // Duplicate call with a different freq/mode — derive a suffix
+    // Duplicate call with a different freq/mode - derive a suffix
     const mode = rbMode(e);
     if (mode === 'DMR') {
       const dmrName = `${e.call}-DMR`;
@@ -373,5 +373,5 @@ if (addedCount > 0) {
   }
 }
 
-// Exit 0 regardless — the workflow checks git diff to decide whether to commit
+// Exit 0 regardless - the workflow checks git diff to decide whether to commit
 process.exit(0);
