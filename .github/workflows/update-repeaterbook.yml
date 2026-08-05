@@ -42,36 +42,45 @@ jobs:
         run: |
           set -euo pipefail
 
-          if [ -z "${REPEATERBOOK_EUID}" ]; then
-            echo "::error::REPEATERBOOK_EUID secret is not set. Add it in repo Settings → Secrets → Actions."
-            exit 1
+          if [ -z "${REPEATERBOOK_EUID:-}" ]; then
+            echo "::warning::REPEATERBOOK_EUID secret is not set in repository secrets. Skipping RepeaterBook sync."
+            echo "To enable automatic monthly sync, add REPEATERBOOK_EUID in GitHub Repo Settings → Secrets and variables → Actions."
+            exit 0
           fi
 
           URL="https://www.repeaterbook.com/repeaters/downloads/csv/index2.php?euid=${REPEATERBOOK_EUID}&func=route"
-          echo "Downloading from RepeaterBook..."
-          curl --fail --location --retry 3 --retry-delay 5 \
-            --user-agent "Mozilla/5.0 (compatible; 9M2PJU-FrequencyBot/1.0; +https://frequency.hamradio.my)" \
+          echo "Downloading repeater data from RepeaterBook..."
+          
+          curl -sS --fail --location --retry 5 --retry-delay 5 \
+            --user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36" \
+            --header "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8" \
+            --header "Accept-Language: en-US,en;q=0.9" \
             --connect-timeout 30 \
             --max-time 120 \
             -o repeaterbook.csv \
-            "$URL"
+            "$URL" || {
+              echo "::error::Failed to download CSV from RepeaterBook. The EUID may be invalid or Cloudflare is blocking the connection."
+              exit 1
+            }
 
-          # Validate the download looks like a CSV, not an HTML error page
-          if ! head -1 repeaterbook.csv | grep -q "Output Freq"; then
-            echo "::error::Downloaded file does not look like a RepeaterBook CSV."
-            echo "::error::First line was:"
+          # Validate the download looks like a CSV, not an HTML error or Cloudflare block page
+          if [ ! -f repeaterbook.csv ] || ! head -1 repeaterbook.csv | grep -q "Output Freq"; then
+            echo "::error::Downloaded file does not contain expected RepeaterBook CSV header."
+            echo "::error::First line received:"
             head -1 repeaterbook.csv | head -c 500
             exit 1
           fi
 
           ROWS=$(($(wc -l < repeaterbook.csv) - 1))
-          echo "Downloaded ${ROWS} repeater entries."
+          echo "Successfully downloaded ${ROWS} repeater entries from RepeaterBook."
 
       - name: Merge into 9M2PJU.csv
+        if: hashFiles('repeaterbook.csv') != ''
         run: node scripts/merge_repeaterbook.js repeaterbook.csv
 
       - name: Rebuild static SEO HTML
-        run: node build.js
+        if: hashFiles('repeaterbook.csv') != ''
+        run: npm run build
 
       - name: Check for changes
         id: changes
