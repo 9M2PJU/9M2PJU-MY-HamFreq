@@ -12,6 +12,7 @@ A meticulously curated, open-source collection of **206 Malaysian amateur radio 
 
 <p align="center">
   <a href="https://hamradio.my"><img src="https://img.shields.io/badge/Ham%20Radio-9M2PJU-00f3ff?style=for-the-badge&logo=radio&logoColor=black" alt="Ham Radio" /></a>
+  <a href="https://x.com/9M2PJU"><img src="https://img.shields.io/badge/X-@9M2PJU-black?style=for-the-badge&logo=x&logoColor=white" alt="X (Twitter)" /></a>
   <img src="https://img.shields.io/badge/Malaysia-🇲🇾-bc13fe?style=for-the-badge" alt="Malaysia" />
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-AGPL%203.0-0aff68?style=for-the-badge" alt="License" /></a>
   <a href="https://frequency.hamradio.my"><img src="https://img.shields.io/badge/Live-frequency.hamradio.my-blue?style=for-the-badge" alt="Live Site" /></a>
