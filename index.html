@@ -67,7 +67,7 @@
   </script>
 
   <!-- Local styles (self-hosted, no CDN dependency) -->
-  <link rel="stylesheet" href="assets/styles.css" />
+  <link rel="stylesheet" href="assets/styles.css?v=2.1.0" />
 
   <!-- Fonts & Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -81,7 +81,7 @@
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <!-- Local libraries (self-hosted, no CDN dependency) -->
-  <script src="assets/papaparse.min.js"></script>
+  <script src="assets/papaparse.min.js?v=2.1.0"></script>
   <style>
     /* Critical fallback: keep modal hidden even if Tailwind fails */
     .hidden,
@@ -549,6 +549,7 @@
       </div>
     </div>
   </div>
+
 
 
 
@@ -3760,7 +3761,7 @@
     }
 
     // ===== Load CSV =====
-    Papa.parse('9M2PJU.csv', {
+    Papa.parse('9M2PJU.csv?v=2.1.0', {
       download: true,
       header: true,
       skipEmptyLines: true,

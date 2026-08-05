@@ -488,8 +488,31 @@ ${jsonLdHtml}
   console.log(`✓ index.html updated with ${rows.length} pre-rendered frequencies and JSON-LD structured data`);
 }
 
+// ── Cache Busting ────────────────────────────────────────────────────────
+function applyCacheBusting() {
+  const pkg = JSON.parse(fs.readFileSync(path.join(__dirname, 'package.json'), 'utf-8'));
+  const version = pkg.version || '2.1.0';
+  const htmlFiles = fs.readdirSync(__dirname).filter(f => f.endsWith('.html'));
+
+  htmlFiles.forEach(file => {
+    const filePath = path.join(__dirname, file);
+    let content = fs.readFileSync(filePath, 'utf-8');
+
+    // Replace assets/styles.css references
+    content = content.replace(/href="assets\/styles\.css(\?v=[^"]+)?"/g, `href="assets/styles.css?v=${version}"`);
+    // Replace assets/papaparse.min.js references
+    content = content.replace(/src="assets\/papaparse\.min\.js(\?v=[^"]+)?"/g, `src="assets/papaparse.min.js?v=${version}"`);
+    // Replace 9M2PJU.csv references in JS
+    content = content.replace(/'9M2PJU\.csv(\?v=[^']+)?'/g, `'9M2PJU.csv?v=${version}'`);
+
+    fs.writeFileSync(filePath, content, 'utf-8');
+  });
+  console.log(`✓ Cache busting query parameter (?v=${version}) applied to ${htmlFiles.length} HTML pages`);
+}
+
 // ── Run ──────────────────────────────────────────────────────────────────
 buildIndex();
+applyCacheBusting();
 
 // Generate sitemap with all pages
 const logoImages = [
@@ -506,3 +529,4 @@ const pages = [
 ];
 fs.writeFileSync(SITEMAP_FILE, generateSitemap(pages), 'utf-8');
 console.log(`✓ sitemap.xml updated with ${pages.length} pages`);
+

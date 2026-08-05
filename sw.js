@@ -1,4 +1,4 @@
-const CACHE_NAME = 'my-hamfreq-v5';
+const CACHE_NAME = 'my-hamfreq-v6';
 const STATIC_ASSETS = [
   './',
   './index.html',
@@ -52,7 +52,7 @@ self.addEventListener('fetch', (event) => {
   }
 
   // CSV data: stale-while-revalidate so offline works but updates still propagate
-  if (url.pathname.endsWith('9M2PJU.csv')) {
+  if (url.pathname.includes('9M2PJU.csv')) {
     event.respondWith(
       caches.match(request).then((cached) => {
         const fetchPromise = fetch(request).then((networkResponse) => {
