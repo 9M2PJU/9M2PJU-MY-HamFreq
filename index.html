@@ -3213,7 +3213,7 @@
       const freq = formatFreq(r.Frequency);
       const category = getCategory(r);
       const offset = parseNumber(r.Offset);
-      const offsetText = offset !== 0 ? `${r.Duplex || '-'}${freq} / ${offset} MHz` : 'Simplex';
+      const offsetText = offset !== 0 ? `${r.Duplex || ''}${offset} MHz` : 'Simplex';
       const tone = r.Tone ? `${escapeHtml(r.Tone)} ${escapeHtml(r.rToneFreq || '')}`.trim() : '-';
       const distHtml = typeof r.distance === 'number' && r.distance !== Infinity
         ? `<span class="inline-flex items-center gap-1 text-[10px] font-mono font-medium text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/20"><i class="fa-solid fa-location-arrow text-[9px]"></i>${r.distance.toFixed(1)} km</span>`
