@@ -601,7 +601,8 @@
           </div>
           <div class="min-w-0 flex-1">
             <h3 id="mapTitle" class="text-lg font-bold text-white truncate">Repeater Location</h3>
-            <p id="mapSubtitle" class="text-xs text-slate-400 truncate font-mono mt-0.5"></p>
+            <p id="mapSubtitle" class="text-xs text-slate-500 truncate font-mono mt-0.5"></p>
+            <div id="mapMeta" class="flex flex-wrap items-center gap-1.5 mt-2"></div>
           </div>
         </div>
       </div>
@@ -619,6 +620,7 @@
       </div>
     </div>
   </div>
+
 
 
 
@@ -3233,7 +3235,7 @@
       ].join(' | '));
 
       const cardClickAttr = hasCoords
-        ? `data-lat="${escapeHtml(r.Latitude)}" data-lon="${escapeHtml(r.Longitude)}" data-name="${escapeHtml(r.Name || '')}" data-loc="${escapeHtml(r.Comment || r.Location || '')}" data-freq="${freq}"`
+        ? `data-lat="${escapeHtml(r.Latitude)}" data-lon="${escapeHtml(r.Longitude)}" data-name="${escapeHtml(r.Name || '')}" data-loc="${escapeHtml(r.Comment || r.Location || '')}" data-freq="${freq}" data-tone="${escapeHtml(r.rToneFreq || '')}" data-offset="${escapeHtml(offsetText)}"`
         : '';
       const cardClass = hasCoords
         ? 'glass-card rounded-2xl p-5 cursor-pointer card-clickable group'
@@ -3493,14 +3495,27 @@
     const mapCoords = document.getElementById('mapCoords');
     const mapGmapsLink = document.getElementById('mapGmapsLink');
 
-    function openMap(lat, lon, name, loc, freq) {
+    const mapMeta = document.getElementById('mapMeta');
+
+    function openMap(lat, lon, name, loc, freq, tone, offset) {
       const latNum = parseFloat(lat);
       const lonNum = parseFloat(lon);
       if (isNaN(latNum) || isNaN(lonNum)) return;
 
       mapTitle.textContent = name || 'Repeater Location';
-      mapSubtitle.textContent = loc ? `${loc} · ${freq} MHz` : `${freq} MHz`;
+      mapSubtitle.textContent = loc || '';
       mapCoords.textContent = `${latNum.toFixed(5)}, ${lonNum.toFixed(5)}`;
+
+      // Info pills: freq, tone, offset
+      const pill = (icon, label, val, color) =>
+        `<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[11px] font-mono font-semibold" style="background:${color}22;border:1px solid ${color}44;color:${color};">
+           <i class="${icon} text-[9px]"></i>${label}: ${val}
+         </span>`;
+      mapMeta.innerHTML = [
+        freq   ? pill('fa-solid fa-wave-square',      'Freq',   freq + ' MHz', '#34d399') : '',
+        tone   ? pill('fa-solid fa-music',            'CTCSS',  tone + ' Hz',  '#22d3ee') : '',
+        offset ? pill('fa-solid fa-arrow-right-arrow-left', 'Offset', offset, '#a78bfa') : ''
+      ].join('');
 
       // OpenStreetMap embed (no API key required)
       const delta = 0.01;
@@ -3530,7 +3545,9 @@
             card.dataset.lon,
             card.dataset.name,
             card.dataset.loc,
-            card.dataset.freq
+            card.dataset.freq,
+            card.dataset.tone,
+            card.dataset.offset
           );
         });
         // Keyboard accessibility: Enter / Space opens map
