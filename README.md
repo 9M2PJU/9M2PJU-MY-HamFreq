@@ -96,6 +96,21 @@ Licensed under the **GNU Affero General Public License 3.0**. See [LICENSE](LICE
 
 Operate with awareness of local amateur radio regulations - this database is for educational and reference use. A valid AROC license is required to transmit on amateur radio bands in Malaysia.
 
+## Report Incorrect Data
+
+If you find an incorrect frequency, CTCSS/DCS tone, offset, callsign, mode, or repeater location, please [open a data correction issue](https://github.com/9M2PJU/9M2PJU-MY-HamFreq/issues/new?template=report-frequency.yml).
+
+Please include:
+
+- The frequency and callsign/name
+- The value currently shown on the website
+- The corrected value
+- Location or repeater site, if relevant
+- Your source or verification method
+- The date you checked it
+
+You need a GitHub account to submit an issue. Issues are public, so do not include private contact details or personal information.
+
 ---
 
 ## About 9M2PJU

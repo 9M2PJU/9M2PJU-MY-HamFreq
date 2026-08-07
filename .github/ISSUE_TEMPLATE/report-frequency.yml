@@ -1,0 +1,99 @@
+name: Report incorrect frequency data
+description: Report a wrong frequency, tone, offset, callsign, mode, or repeater location.
+title: "[Data Correction] "
+labels:
+  - data-correction
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping keep the Malaysian frequency database accurate.
+
+        Please do not include phone numbers, home addresses, or other private information. Issues are public.
+
+  - type: dropdown
+    id: correction-type
+    attributes:
+      label: What needs correction?
+      options:
+        - Frequency
+        - CTCSS/DCS tone
+        - Offset or duplex
+        - Callsign or name
+        - Mode or power
+        - Repeater location
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: frequency
+    attributes:
+      label: Frequency
+      description: Include MHz and, if known, the channel number.
+      placeholder: "Example: 145.675 MHz"
+    validations:
+      required: true
+
+  - type: input
+    id: callsign
+    attributes:
+      label: Callsign or repeater name
+      placeholder: "Example: 9M2RKL / Bukit Lanjan"
+    validations:
+      required: true
+
+  - type: textarea
+    id: current-value
+    attributes:
+      label: Current value shown
+      description: Copy the value currently displayed on the website.
+      placeholder: |
+        Tone: 88.5 Hz
+        Offset: +0.600 MHz
+        Location: ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: corrected-value
+    attributes:
+      label: Suggested correction
+      description: Tell us exactly what should replace it.
+      placeholder: |
+        Tone should be 103.5 Hz.
+        Repeater location should be ...
+    validations:
+      required: true
+
+  - type: input
+    id: location
+    attributes:
+      label: State or location
+      placeholder: "Example: Selangor, Bukit Lanjan"
+
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Source or verification
+      description: Link to an official source, repeater group, document, or explain how you verified it.
+      placeholder: "Example: Verified by listening on 2026-08-07; source: https://..."
+    validations:
+      required: true
+
+  - type: input
+    id: checked-date
+    attributes:
+      label: Date checked
+      description: Use YYYY-MM-DD format.
+      placeholder: "2026-08-07"
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: confirmation
+    attributes:
+      label: Confirmation
+      options:
+        - label: I have provided accurate information and understand this issue is public.
+          required: true

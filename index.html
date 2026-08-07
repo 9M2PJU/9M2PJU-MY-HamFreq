@@ -511,8 +511,26 @@
       <div class="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-slate-900/80 border border-slate-800 shadow-sm text-xs text-slate-400">
         <i class="fa-solid fa-users text-emerald-400"></i>
         <span>Community Visitors:</span>
-        <img src="https://api.visitorbadge.io/api/visitors?path=pass.hamradio.my&label=visitors&countColor=%2310b981&labelColor=%230f172a&style=flat"
-          alt="Total visitors" class="h-4 w-auto opacity-90" loading="lazy" />
+        <strong id="visitor-count" class="font-mono font-bold text-emerald-400" aria-live="polite">Loading…</strong>
+      </div>
+    </section>
+
+    <!-- Community corrections -->
+    <section class="mb-10 animate-fade-in-up" style="animation-delay: 0.12s" aria-label="Report frequency data corrections">
+      <div class="glass-panel rounded-2xl p-5 sm:p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-5">
+        <div class="flex items-start gap-4">
+          <div class="w-11 h-11 shrink-0 rounded-xl flex items-center justify-center text-emerald-400" style="background:rgba(16,185,129,0.12);border:1px solid rgba(16,185,129,0.25);">
+            <i class="fa-solid fa-flag-checkered"></i>
+          </div>
+          <div>
+            <h2 class="font-bold text-white text-sm">Help keep the database accurate</h2>
+            <p class="text-xs text-slate-500 leading-relaxed mt-1 max-w-2xl">Found a wrong frequency, tone, offset, callsign, or repeater location? Send the details through GitHub and help other operators.</p>
+          </div>
+        </div>
+        <a href="https://github.com/9M2PJU/9M2PJU-MY-HamFreq/issues/new?template=report-frequency.yml" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 min-h-10 px-4 py-2 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/20 hover:border-emerald-500/50 transition-all text-xs font-bold whitespace-nowrap">
+          <i class="fa-brands fa-github"></i>
+          Report an issue
+        </a>
       </div>
     </section>
 
@@ -658,6 +676,7 @@
           <a href="pmr446-guide.html" class="text-sm text-slate-500 hover:text-emerald-400 transition-colors font-medium">PMR446 Guide</a>
           <a href="bands-guide.html" class="text-sm text-slate-500 hover:text-emerald-400 transition-colors font-medium">Bands Guide</a>
           <a href="about.html" class="text-sm text-slate-500 hover:text-emerald-400 transition-colors font-medium">About</a>
+          <a href="https://github.com/9M2PJU/9M2PJU-MY-HamFreq/issues/new?template=report-frequency.yml" target="_blank" rel="noopener" class="text-sm text-slate-500 hover:text-emerald-400 transition-colors font-medium">Report Data Issue</a>
         </nav>
         <p class="text-xs text-slate-600">&copy; <span id="year"></span> Malaysian Amateur Radio Frequency Database &mdash; Created by
           <a href="https://hamradio.my" class="text-emerald-500 hover:text-emerald-400 transition-colors font-semibold">9M2PJU</a>
@@ -665,6 +684,44 @@
       </div>
     </div>
   </footer>
+
+  <script>
+    // Count production page visits without rendering a broken third-party image.
+    (() => {
+      const counter = document.getElementById('visitor-count');
+      const productionHosts = ['frequency.hamradio.my', 'www.frequency.hamradio.my'];
+      if (!counter) return;
+      if (!productionHosts.includes(window.location.hostname)) {
+        counter.textContent = 'Preview';
+        return;
+      }
+
+      fetch('https://visitor.6developer.com/visit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'omit',
+        body: JSON.stringify({
+          domain: 'frequency.hamradio.my',
+          timezone: 'Asia/Kuala_Lumpur',
+          page_path: window.location.pathname,
+          page_title: document.title,
+          referrer: document.referrer
+        })
+      })
+        .then(response => {
+          if (!response.ok) throw new Error('Visitor counter request failed');
+          return response.json();
+        })
+        .then(data => {
+          counter.textContent = Number(data.totalCount || 0).toLocaleString();
+        })
+        .catch(() => {
+          counter.textContent = 'Unavailable';
+          counter.classList.remove('text-emerald-400');
+          counter.classList.add('text-slate-500');
+        });
+    })();
+  </script>
 
   <!-- Donation Modal -->
   <div id="donationModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/80 backdrop-blur-md p-4"
@@ -685,7 +742,7 @@
         </p>
 
         <div class="bg-white p-3 rounded-2xl mx-auto w-48 h-48 shadow-xl mb-4 border border-slate-200">
-          <img src="donate_qr.png" alt="DuitNow QR code for donations to 9M2PJU" width="192" height="192" class="w-full h-full object-contain" loading="lazy" />
+          <img src="donate_qr_user.jpg" alt="Donation QR code for supporting 9M2PJU" width="192" height="192" class="w-full h-full object-contain" loading="lazy" />
         </div>
 
         <p class="text-[11px] text-slate-400 font-medium">Scan with any Malaysian Banking app or TNG eWallet</p>
@@ -727,6 +784,8 @@
       </div>
     </div>
   </div>
+
+
 
 
 
@@ -3763,6 +3822,11 @@
 
     donateOpenBtn.addEventListener('click', openDonation);
     donateCloseBtn.addEventListener('click', closeDonation);
+
+    // Invite support once on every page visit; users can dismiss it immediately.
+    window.setTimeout(() => {
+      if (document.visibilityState === 'visible') openDonation();
+    }, 1200);
 
     donationModal.addEventListener('click', (e) => {
       if (e.target === donationModal) closeDonation();
