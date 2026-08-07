@@ -84,7 +84,6 @@
   <script src="assets/papaparse.min.js?v=2.1.0"></script>
   <style>
     /* Critical fallback: keep modal hidden even if Tailwind fails */
-    .hidden,
     #donationModal[hidden],
     #mapModal[hidden] {
       display: none !important;
@@ -260,6 +259,120 @@
     }
 
     /* ── Print ── */
+    /* ── Dark field UI refinement ── */
+    :root {
+      --field-bg: #070b14;
+      --field-surface: rgba(14, 22, 38, 0.88);
+      --field-surface-raised: rgba(19, 29, 49, 0.94);
+      --field-border: rgba(148, 163, 184, 0.14);
+      --field-border-strong: rgba(52, 211, 153, 0.38);
+      --field-muted: #8ea0b7;
+      --field-text: #e7eef7;
+      --field-shadow: 0 18px 50px -28px rgba(0, 0, 0, 0.95);
+    }
+
+    html { background: var(--field-bg); }
+    body {
+      background-color: var(--field-bg);
+      background-image:
+        linear-gradient(rgba(148,163,184,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(148,163,184,0.025) 1px, transparent 1px),
+        radial-gradient(ellipse 70% 45% at 50% -12%, rgba(16,185,129,0.13), transparent 72%),
+        radial-gradient(ellipse 45% 35% at 100% 42%, rgba(6,182,212,0.06), transparent 70%);
+      background-size: 42px 42px, 42px 42px, auto, auto;
+      color: var(--field-text);
+      overflow-x: hidden;
+    }
+
+    header {
+      background: rgba(7, 11, 20, 0.9) !important;
+      border-bottom-color: var(--field-border) !important;
+      box-shadow: 0 10px 32px -18px rgba(0,0,0,0.95) !important;
+    }
+    header::after { opacity: 0.45; }
+
+    main { max-width: 1240px; }
+    .hero-gradient {
+      background: none;
+      color: #67e8f9;
+      -webkit-text-fill-color: #67e8f9;
+      animation: none;
+    }
+    .stat-card {
+      background: linear-gradient(145deg, rgba(18,29,49,0.92), rgba(10,17,30,0.92));
+      border-color: var(--field-border);
+      box-shadow: var(--field-shadow);
+      padding: 1.1rem;
+    }
+    .stat-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 45px -24px rgba(0,0,0,0.95), 0 0 0 1px rgba(52,211,153,0.18);
+    }
+    .glass-panel {
+      background: rgba(11, 18, 31, 0.94);
+      border-color: var(--field-border);
+      box-shadow: var(--field-shadow);
+    }
+    .glass-card {
+      background: linear-gradient(145deg, rgba(18,29,49,0.86), rgba(10,17,30,0.92));
+      border-color: var(--field-border) !important;
+      box-shadow: var(--field-shadow);
+    }
+    .glass-card:hover {
+      background: var(--field-surface-raised);
+      border-color: var(--field-border-strong) !important;
+      box-shadow: 0 20px 48px -28px rgba(0,0,0,0.98), 0 0 0 1px rgba(52,211,153,0.12);
+    }
+    .filter-chip {
+      min-height: 40px;
+      padding-inline: 0.9rem;
+      background: rgba(255,255,255,0.035);
+      border-color: var(--field-border);
+    }
+    .filter-chip.active { box-shadow: inset 0 0 0 1px rgba(52,211,153,0.08); }
+    .freq-box {
+      background: rgba(4, 9, 17, 0.72);
+      border-color: rgba(52,211,153,0.26);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.035);
+    }
+    .section-divider { background: linear-gradient(90deg, rgba(52,211,153,0.24), transparent); }
+    input, button, a { -webkit-tap-highlight-color: transparent; }
+    button, .filter-chip { min-height: 40px; }
+    #search { min-height: 46px; }
+    #resultsSummary { color: var(--field-muted); }
+    .table-scroll { overflow-x: auto; overscroll-behavior-x: contain; scrollbar-color: #334155 transparent; }
+    .table-scroll table { min-width: 760px; }
+
+    @media (max-width: 639px) {
+      header .h-16 { height: 3.75rem; }
+      main { padding-top: 5.75rem; }
+      .hero-gradient { display: inline; }
+      .stat-card { padding: 0.9rem 0.7rem; border-radius: 1rem; }
+      .stat-card .text-3xl { font-size: 1.75rem; }
+      #controls { top: 4.5rem; margin-inline: -0.1rem; }
+      #controls > div { padding: 0.75rem; border-radius: 1rem; }
+      #filters { margin-inline: -0.25rem; padding-inline: 0.25rem; }
+      #filters .filter-chip { min-height: 42px; }
+      #resultsSummary { gap: 0.75rem; align-items: flex-start; }
+      #resultsSummary span { line-height: 1.4; }
+    }
+
+    @media (min-width: 768px) {
+      header nav { display: flex !important; }
+      header .sm\:block { display: block !important; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+      .glass-card:hover, .stat-card:hover { transform: none; }
+    }
+
     @media print {
       header, footer, #controls, #backToTop, .no-print { display: none !important; }
       body { background: white !important; color: black !important; }
@@ -614,6 +727,8 @@
       </div>
     </div>
   </div>
+
+
 
 
 
@@ -3325,7 +3440,7 @@
       }).join('');
 
       return `
-        <div class="overflow-x-auto rounded-2xl border border-slate-800 bg-slate-900/60 shadow-xl">
+          <div class="table-scroll overflow-x-auto rounded-2xl border border-slate-800 bg-slate-900/60 shadow-xl">
           <table class="w-full text-sm text-left">
             <thead class="bg-slate-950/80 text-xs uppercase text-slate-400 font-bold border-b border-slate-800">
               <tr>
