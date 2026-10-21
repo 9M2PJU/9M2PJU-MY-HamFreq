@@ -418,7 +418,14 @@
     .seg button[aria-pressed="true"] { background: rgba(16,185,129,0.16); color: #34d399; box-shadow: inset 0 0 0 1px rgba(16,185,129,0.3); }
     #filterPanel { display: none; }
     #filterPanel.open { display: flex; flex-direction: column; gap: 0.6rem; }
-    @media (min-width: 1024px) { #filterPanel { display: flex; flex-direction: column; gap: 0.6rem; } }
+    @media (min-width: 1024px) {
+      #filterPanel { display: grid; grid-template-columns: 1fr auto; gap: 0.6rem 0.75rem; align-items: center; }
+      #filters { grid-column: 1 / -1; }
+      .filter-row { display: flex; gap: 0.5rem; }
+      #stateFilter { width: 11rem; }
+      #sortFilter { width: 10rem; }
+      .filter-actions { justify-content: flex-end; }
+    }
     #filters { display: flex; flex-wrap: wrap; gap: 0.4rem; }
     .filter-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; }
     @media (min-width: 1024px) { .filter-row { grid-template-columns: 11rem 10rem; } }
@@ -474,6 +481,9 @@
     [data-theme="light"] #mobileDrawer .drawer-panel { background: #ffffff; border-color: #e2e8f0; }
     [data-theme="light"] #mobileNav { background: rgba(255,255,255,0.94) !important; border-top-color: #e2e8f0 !important; }
     [data-theme="light"] #donationModal .modal-card, [data-theme="light"] #mapModal .modal-card { background: #ffffff; border-color: #e2e8f0; }
+    [data-theme="light"] #donationModal, [data-theme="light"] #mapModal { background-color: rgba(15,23,42,0.55) !important; }
+    [data-theme="light"] #mobileDrawer > div[data-drawer-close] { background-color: rgba(15,23,42,0.5) !important; }
+    [data-theme="light"] [aria-label="Share this page"] a, [data-theme="light"] [aria-label="Share this page"] button { background: #ffffff !important; border-color: #cbd5e1 !important; box-shadow: 0 1px 2px rgba(15,23,42,0.08); }
     [data-theme="light"] footer { background: rgba(255,255,255,0.9) !important; border-top-color: #e2e8f0 !important; }
     @media (max-width: 767px) {
       [data-theme="light"] .table-scroll td:first-child { background-color: #f8fafc; }
@@ -1077,6 +1087,7 @@
       </div>
     </div>
   </div>
+
 
 
 
@@ -4450,7 +4461,7 @@
 
       const banner = document.createElement('div');
       banner.id = 'installBanner';
-      banner.className = 'fixed left-4 right-4 sm:left-auto sm:right-4 sm:w-96 z-40 bg-black/80/95 backdrop-blur-xl border border-primary-500/10 rounded-2xl shadow-2xl p-4 animate-fade-in-up';
+      banner.className = 'fixed left-4 right-4 sm:left-auto sm:right-4 sm:w-96 z-40 bg-slate-950/95 backdrop-blur-xl border border-primary-500/10 rounded-2xl shadow-2xl p-4 animate-fade-in-up';
       banner.style.bottom = window.innerWidth < 768 ? 'calc(5.5rem + env(safe-area-inset-bottom, 0px))' : '1rem';
 
       if (iosInstructions) {
