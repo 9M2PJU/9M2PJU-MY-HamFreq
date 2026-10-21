@@ -1,6 +1,6 @@
 {
   "name": "my-hamfreq",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "MY-HamFreq - Malaysian Amateur Radio Frequency Database - a searchable PWA of simplex, repeater, and PMR frequencies.",
   "scripts": {
     "build": "node build.js && tailwindcss -i ./assets/input.css -o ./assets/styles.css --minify",

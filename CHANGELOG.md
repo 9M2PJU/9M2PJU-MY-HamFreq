@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [v2.2.1] - 2026-10-21
+
+### 🐛 Fixes
+- Rebuilt stale Tailwind stylesheet (missing `grid-cols-5`, `md:hidden`, offsets broke the mobile nav and hamburger layout); bumped cache-busting to `?v=2.2.1` so clients fetch fresh CSS.
+
 ## [v2.2.0] - 2026-10-21
 
 ### ✨ New
