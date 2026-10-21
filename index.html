@@ -4,7 +4,7 @@
 <head>
   <script>
     /* Theme before paint: persisted choice, else OS preference. Default dark. */
-    (function(){try{var s=localStorage.getItem('hamfreq_theme');if(!s){s=(window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches)?'light':'dark';}document.documentElement.setAttribute('data-theme',s);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();
+    (function(){try{var s=localStorage.getItem('hamfreq_theme');if(!s){s='light';}document.documentElement.setAttribute('data-theme',s);}catch(e){document.documentElement.setAttribute('data-theme','light');}})();
   </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -90,7 +90,7 @@
   </script>
 
   <!-- Local styles (self-hosted, no CDN dependency) -->
-  <link rel="stylesheet" href="assets/styles.css?v=2.2.1" />
+  <link rel="stylesheet" href="assets/styles.css?v=2.3.0" />
 
   <!-- Fonts & Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -104,7 +104,7 @@
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <!-- Local libraries (self-hosted, no CDN dependency) -->
-  <script src="assets/papaparse.min.js?v=2.2.1"></script>
+  <script src="assets/papaparse.min.js?v=2.3.0"></script>
   <style>
     /* Critical fallback: keep modal hidden even if Tailwind fails */
     #donationModal[hidden],
@@ -564,6 +564,104 @@
       main { padding-top: 5rem; }
     }
 
+
+    /* ── v2.3 Logbook redesign ── */
+    /* database sidebar layout */
+    @media (min-width: 1024px) {
+      .db-layout { display: grid; grid-template-columns: 300px minmax(0,1fr); gap: 1.5rem; align-items: start; }
+      .db-layout #controls { position: sticky; top: 5rem; z-index: 20; margin-bottom: 0; max-height: calc(100vh - 6rem); overflow-y: auto; }
+      .db-layout #filterPanel { display: flex; flex-direction: column; }
+      .db-layout .filter-row { grid-template-columns: 1fr; }
+      .db-layout .filter-actions { justify-content: stretch; }
+      .db-layout .filter-actions .btn-ghost, .db-layout .filter-actions .btn-accent { flex: 1 1 auto; justify-content: center; }
+      .db-layout .seg { width: 100%; }
+      .db-layout .seg button { flex: 1; justify-content: center; }
+    }
+    /* masthead */
+    .masthead { position: relative; overflow: hidden; border-radius: 18px; padding: 1.75rem 1.5rem 1.5rem; margin-bottom: 2rem; }
+    .masthead::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, #ea580c, #f59e0b 45%, #0e7490); }
+    .masthead-main { max-width: 44rem; }
+    .kicker { display: flex; align-items: center; gap: 0.5rem; font-family: "JetBrains Mono", monospace; font-size: 11px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; margin-bottom: 0.75rem; }
+    .live-dot { width: 8px; height: 8px; border-radius: 9999px; background: #22c55e; box-shadow: 0 0 0 0 rgba(34,197,94,0.6); animation: livePulse 2s infinite; }
+    @keyframes livePulse { 0% { box-shadow: 0 0 0 0 rgba(34,197,94,0.55); } 70% { box-shadow: 0 0 0 9px rgba(34,197,94,0); } 100% { box-shadow: 0 0 0 0 rgba(34,197,94,0); } }
+    .masthead h1 { font-size: clamp(1.9rem, 4.5vw, 2.9rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.04; margin-bottom: 0.75rem; }
+    .masthead .lede { font-size: 1rem; line-height: 1.65; max-width: 38rem; }
+    .masthead-actions { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.15rem; }
+    .share-row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+    .share-row a, .share-row button { width: 2.5rem; height: 2.5rem; border-radius: 10px; display: inline-flex; align-items: center; justify-content: center; font-size: 0.75rem; transition: all 0.2s ease; }
+    .stat-strip { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; margin-top: 1.5rem; border-radius: 14px; overflow: hidden; }
+    @media (min-width: 640px) { .stat-strip { grid-template-columns: repeat(4, 1fr); } }
+    .stat-strip > div { padding: 0.85rem 1.1rem; }
+    .stat-strip dt { font-size: 10px; text-transform: uppercase; letter-spacing: 0.14em; font-weight: 700; margin-bottom: 0.15rem; }
+    .stat-strip dd { font-family: "JetBrains Mono", monospace; font-size: 1.65rem; font-weight: 800; line-height: 1.1; margin: 0; }
+    /* ── light: paper logbook ── */
+    html[data-theme="light"] body { background-color: #f4f1ea; background-image: linear-gradient(rgba(26,35,50,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(26,35,50,0.05) 1px, transparent 1px), radial-gradient(ellipse 60% 40% at 50% -10%, rgba(234,88,12,0.10), transparent 70%); background-size: 28px 28px, 28px 28px, auto; color: #2a3444; }
+    html[data-theme="light"] header { background: rgba(250,248,243,0.92) !important; border-bottom: 1px solid #e7dfd0 !important; box-shadow: 0 10px 32px -20px rgba(26,35,50,0.35) !important; }
+    html[data-theme="light"] .masthead { background: #fffdf8; border: 1px solid #e7dfd0; box-shadow: 0 24px 60px -40px rgba(26,35,50,0.4); }
+    html[data-theme="light"] .masthead h1 { color: #1a2332; }
+    html[data-theme="light"] .masthead h1 span { color: #c2410c; }
+    html[data-theme="light"] .kicker { color: #c2410c; }
+    html[data-theme="light"] .masthead .lede { color: #5b6472; }
+    html[data-theme="light"] .share-row a, html[data-theme="light"] .share-row button { background: #ffffff !important; border: 1px solid #ddd3c0 !important; color: #5b6472 !important; box-shadow: 0 1px 2px rgba(26,35,50,0.08); }
+    html[data-theme="light"] .stat-strip { background: #e7dfd0; border: 1px solid #e7dfd0; }
+    html[data-theme="light"] .stat-strip > div { background: #fffdf8; }
+    html[data-theme="light"] .stat-strip dt { color: #8a93a1; }
+    html[data-theme="light"] .stat-strip dd { color: #1a2332; }
+    html[data-theme="light"] #stat-repeater { color: #c2410c; }
+    html[data-theme="light"] #stat-simplex { color: #0e7490; }
+    html[data-theme="light"] #stat-pmr { color: #b45309; }
+    html[data-theme="light"] .glass-panel { background: #fffdf8; border: 1px solid #e7dfd0; box-shadow: 0 24px 60px -40px rgba(26,35,50,0.4); }
+    html[data-theme="light"] .filter-chip { background: #ffffff; border: 1px solid #ddd3c0; color: #5b6472; }
+    html[data-theme="light"] .filter-chip:hover { background: #f4f1ea; color: #1a2332; border-color: #b9ac93; transform: none; }
+    html[data-theme="light"] .filter-chip.active { background: #1a2332; color: #fff; border-color: #1a2332; box-shadow: none; }
+    html[data-theme="light"] .btn-accent { background: #ea580c; border: 1px solid #c2410c; color: #fff; box-shadow: 0 8px 18px -10px rgba(234,88,12,0.8); }
+    html[data-theme="light"] .btn-accent:hover { background: #c2410c; }
+    html[data-theme="light"] .btn-accent i { color: #fff !important; }
+    html[data-theme="light"] .btn-ghost { background: #ffffff; border: 1px solid #ddd3c0; color: #3d4757; }
+    html[data-theme="light"] .btn-ghost:hover { color: #1a2332; background: #f4f1ea; }
+    html[data-theme="light"] .seg button[aria-pressed="true"] { background: #1a2332; color: #fff; box-shadow: none; }
+    html[data-theme="light"] .pill { background: #fff1e6; color: #c2410c; border-color: #f0b98a; }
+    html[data-theme="light"] .pill-clear { color: #c2410c; }
+    html[data-theme="light"] #output .glass-card { border-radius: 14px; background: #fffdf8; border: 1px solid #e7dfd0 !important; border-left-width: 5px; box-shadow: 0 1px 2px rgba(26,35,50,0.06); }
+    html[data-theme="light"] #output .band-vhf { border-left-color: #0e7490 !important; }
+    html[data-theme="light"] #output .band-uhf { border-left-color: #047857 !important; }
+    html[data-theme="light"] #output .band-pmr { border-left-color: #b45309 !important; }
+    html[data-theme="light"] #output .glass-card:hover { transform: translateY(-2px); background: #fff; border-color: #e7dfd0; box-shadow: 0 16px 32px -20px rgba(26,35,50,0.35); }
+    html[data-theme="light"] #output .band-vhf:hover { border-left-color: #0e7490 !important; }
+    html[data-theme="light"] #output .band-uhf:hover { border-left-color: #047857 !important; }
+    html[data-theme="light"] #output .band-pmr:hover { border-left-color: #b45309 !important; }
+    html[data-theme="light"] .freq-box { background: #f4f1ea; border-color: #e0d3b8; box-shadow: none; }
+    html[data-theme="light"] .freq-num { color: #c2410c; }
+    html[data-theme="light"] .table-scroll { background: #fffdf8; border-color: #e7dfd0; }
+    html[data-theme="light"] .table-scroll thead th { background-color: #1a2332 !important; color: #f4f1ea !important; }
+    html[data-theme="light"] .table-scroll tbody tr:nth-child(even) { background: #faf7f0; }
+    html[data-theme="light"] footer { background: #ece5d3 !important; border-top: 1px solid #e7dfd0 !important; }
+    /* ── dark: refined midnight ── */
+    html[data-theme="dark"] body { background-color: #0a1120; }
+    html[data-theme="dark"] .masthead { background: linear-gradient(160deg, rgba(21,32,54,0.95), rgba(10,17,32,0.95)); border: 1px solid rgba(255,255,255,0.09); box-shadow: 0 24px 60px -30px rgba(0,0,0,0.8); }
+    html[data-theme="dark"] .masthead h1 { color: #fff; }
+    html[data-theme="dark"] .masthead h1 span { color: #fb9236; }
+    html[data-theme="dark"] .kicker { color: #fb9236; }
+    html[data-theme="dark"] .masthead .lede { color: #94a3b8; }
+    html[data-theme="dark"] .stat-strip { background: rgba(255,255,255,0.09); border: 1px solid rgba(255,255,255,0.09); }
+    html[data-theme="dark"] .stat-strip > div { background: rgba(13,20,38,0.9); }
+    html[data-theme="dark"] .stat-strip dt { color: #64748b; }
+    html[data-theme="dark"] .stat-strip dd { color: #fff; }
+    html[data-theme="dark"] #stat-repeater { color: #fb9236; }
+    html[data-theme="dark"] #stat-simplex { color: #22d3ee; }
+    html[data-theme="dark"] #stat-pmr { color: #fbbf24; }
+    html[data-theme="dark"] #output .glass-card { border-radius: 14px; border-left-width: 5px; }
+    html[data-theme="dark"] #output .band-vhf { border-left-color: #0e7490 !important; }
+    html[data-theme="dark"] #output .band-uhf { border-left-color: #10b981 !important; }
+    html[data-theme="dark"] #output .band-pmr { border-left-color: #f59e0b !important; }
+    html[data-theme="dark"] .btn-accent { background: rgba(234,88,12,0.14); border-color: rgba(234,88,12,0.45); color: #fb9236; }
+    html[data-theme="dark"] .btn-accent:hover { background: rgba(234,88,12,0.24); }
+    html[data-theme="dark"] .filter-chip.active { background: rgba(234,88,12,0.16); color: #fb9236; border-color: rgba(234,88,12,0.5); box-shadow: 0 0 14px rgba(234,88,12,0.2); }
+    html[data-theme="dark"] .seg button[aria-pressed="true"] { background: rgba(234,88,12,0.18); color: #fb9236; box-shadow: inset 0 0 0 1px rgba(234,88,12,0.4); }
+    html[data-theme="dark"] .pill { background: rgba(234,88,12,0.12); color: #fb9236; border-color: rgba(234,88,12,0.4); }
+    html[data-theme="dark"] .pill-clear { color: #fb9236; }
+    html[data-theme="dark"] .freq-num { color: #fb9236; }
+
     @media print {
       header, footer, #controls, #backToTop, .no-print { display: none !important; }
       body { background: white !important; color: black !important; }
@@ -650,27 +748,28 @@
   </div>
 
   <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pt-24 sm:pt-28 pb-16">
-    <!-- Hero -->
-    <section class="text-center mb-8 animate-fade-in-up">
-
-      <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-5" style="line-height:1.12;">
-        Malaysian Amateur Radio <br class="hidden md:block" />
-        <span class="hero-gradient">Frequency Database</span>
+    <!-- Masthead -->
+    <section class="masthead animate-fade-in-up">
+      <div class="masthead-main">
+      <p class="kicker"><span class="live-dot" aria-hidden="true"></span>9M2PJU · Malaysia · live database</p>
+      <h1>
+        Malaysian Amateur Radio<br />
+        <span>Frequency Database</span>
       </h1>
-      <p class="text-slate-400 text-base sm:text-lg max-w-xl mx-auto leading-relaxed mb-5">
+      <p class="lede">
         A curated, searchable reference of simplex, repeater, and PMR446 frequencies for Malaysian operators. Fully CHIRP-compatible.
       </p>
 
       <!-- Quick actions -->
-      <div class="flex flex-wrap items-center justify-center gap-2 mb-6">
+      <div class="masthead-actions">
         <button id="qaNear" class="btn-accent"><i class="fa-solid fa-location-crosshairs"></i>Near Me</button>
-        <a href="9M2PJU.csv?v=2.2.1" download class="btn-ghost"><i class="fa-solid fa-file-arrow-down text-emerald-400"></i>CSV Export</a>
+        <a href="9M2PJU.csv?v=2.3.0" download class="btn-ghost"><i class="fa-solid fa-file-arrow-down text-emerald-400"></i>CSV Export</a>
         <button id="qaInstall" class="btn-ghost hidden"><i class="fa-solid fa-download text-emerald-400"></i>Install App</button>
         <button id="qaDonate" class="btn-ghost"><i class="fa-solid fa-heart text-rose-400"></i>Donate</button>
       </div>
 
       <!-- Share Bar -->
-      <div class="flex items-center justify-center gap-2" aria-label="Share this page">
+      <div class="share-row" aria-label="Share this page">
         <a href="https://x.com/intent/post?url=https%3A%2F%2Ffrequency.hamradio.my&text=Malaysian%20Amateur%20Radio%20Frequency%20Database%20by%20%409M2PJU" target="_blank" rel="noopener" class="w-9 h-9 rounded-xl border border-slate-800/80 text-slate-500 hover:text-white hover:border-slate-600 transition-all flex items-center justify-center" style="background:rgba(255,255,255,0.04);" title="Share on X (Twitter)" aria-label="Share on X (Twitter)">
           <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
         </a>
@@ -690,49 +789,13 @@
           <i class="fa-solid fa-link text-xs"></i>
         </button>
       </div>
-    </section>
 
-    <!-- Stats Section -->
-    <section class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mb-8 animate-fade-in-up" style="animation-delay: 0.05s">
-      <div class="stat-card stat-card-total">
-        <div class="absolute inset-0 rounded-[1.25rem] opacity-40" style="background:radial-gradient(circle at 80% 20%, rgba(16,185,129,0.18), transparent 60%);"></div>
-        <div class="relative">
-          <div class="w-9 h-9 rounded-xl mx-auto mb-3 flex items-center justify-center" style="background:rgba(16,185,129,0.12);border:1px solid rgba(16,185,129,0.25);">
-            <i class="fa-solid fa-database text-emerald-400 text-sm"></i>
-          </div>
-          <div class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight" id="stat-total">-</div>
-          <div class="text-[11px] text-slate-500 uppercase tracking-widest font-bold mt-2">Total Channels</div>
-        </div>
-      </div>
-      <div class="stat-card stat-card-simplex">
-        <div class="absolute inset-0 rounded-[1.25rem] opacity-40" style="background:radial-gradient(circle at 80% 20%, rgba(6,182,212,0.18), transparent 60%);"></div>
-        <div class="relative">
-          <div class="w-9 h-9 rounded-xl mx-auto mb-3 flex items-center justify-center" style="background:rgba(6,182,212,0.12);border:1px solid rgba(6,182,212,0.25);">
-            <i class="fa-solid fa-tower-cell text-cyan-400 text-sm"></i>
-          </div>
-          <div class="text-3xl sm:text-4xl font-extrabold text-cyan-400 tracking-tight" id="stat-simplex">-</div>
-          <div class="text-[11px] text-slate-500 uppercase tracking-widest font-bold mt-2">Simplex</div>
-        </div>
-      </div>
-      <div class="stat-card stat-card-rep">
-        <div class="absolute inset-0 rounded-[1.25rem] opacity-40" style="background:radial-gradient(circle at 80% 20%, rgba(52,211,153,0.18), transparent 60%);"></div>
-        <div class="relative">
-          <div class="w-9 h-9 rounded-xl mx-auto mb-3 flex items-center justify-center" style="background:rgba(52,211,153,0.12);border:1px solid rgba(52,211,153,0.25);">
-            <i class="fa-solid fa-tower-broadcast text-emerald-400 text-sm"></i>
-          </div>
-          <div class="text-3xl sm:text-4xl font-extrabold text-emerald-400 tracking-tight" id="stat-repeater">-</div>
-          <div class="text-[11px] text-slate-500 uppercase tracking-widest font-bold mt-2">Repeaters</div>
-        </div>
-      </div>
-      <div class="stat-card stat-card-pmr">
-        <div class="absolute inset-0 rounded-[1.25rem] opacity-40" style="background:radial-gradient(circle at 80% 20%, rgba(245,158,11,0.18), transparent 60%);"></div>
-        <div class="relative">
-          <div class="w-9 h-9 rounded-xl mx-auto mb-3 flex items-center justify-center" style="background:rgba(245,158,11,0.12);border:1px solid rgba(245,158,11,0.25);">
-            <i class="fa-solid fa-walkie-talkie text-amber-400 text-sm"></i>
-          </div>
-          <div class="text-3xl sm:text-4xl font-extrabold text-amber-400 tracking-tight" id="stat-pmr">-</div>
-          <div class="text-[11px] text-slate-500 uppercase tracking-widest font-bold mt-2">PMR446</div>
-        </div>
+      <dl class="stat-strip" aria-label="Database statistics">
+        <div><dt>Total channels</dt><dd id="stat-total">-</dd></div>
+        <div><dt>Repeaters</dt><dd id="stat-repeater">-</dd></div>
+        <div><dt>Simplex</dt><dd id="stat-simplex">-</dd></div>
+        <div><dt>PMR446</dt><dd id="stat-pmr">-</dd></div>
+      </dl>
       </div>
     </section>
 
@@ -764,8 +827,10 @@
       </div>
     </section>
 
-    <!-- Sticky Control Panel -->
-    <section id="controls" class="sticky top-20 z-30 mb-8 animate-fade-in-up" style="animation-delay: 0.15s">
+    <!-- Database layout: sidebar + results -->
+    <div class="db-layout">
+    <!-- Sidebar controls -->
+    <section id="controls" class="db-sidebar animate-fade-in-up" style="animation-delay: 0.15s">
       <div class="glass-panel rounded-2xl p-4 shadow-2xl">
         <div class="toolbar-stack">
           <!-- Search + filter toggle -->
@@ -779,7 +844,7 @@
               </button>
               <kbd id="searchKbd" class="kbd-hint hidden sm:inline-block absolute right-3 top-1/2 -translate-y-1/2 px-2 py-0.5 text-[10px] font-mono text-slate-500 rounded">/</kbd>
             </div>
-            <button id="filterToggle" class="btn-ghost shrink-0" aria-expanded="false" aria-controls="filterPanel">
+            <button id="filterToggle" class="btn-ghost shrink-0 lg:hidden" aria-expanded="false" aria-controls="filterPanel">
               <i class="fa-solid fa-sliders text-emerald-400"></i><span class="hidden sm:inline">Filters</span>
               <span id="filterCount" class="hidden min-w-[1.25rem] h-5 px-1 rounded-full bg-emerald-500 text-white text-[10px] font-bold items-center justify-center">0</span>
             </button>
@@ -835,7 +900,7 @@
               <button id="viewTable" aria-pressed="false"><i class="fa-solid fa-list"></i><span class="hidden sm:inline">Table</span></button>
             </div>
 
-            <a href="9M2PJU.csv?v=2.2.1" download class="btn-accent" title="Download CHIRP CSV">
+            <a href="9M2PJU.csv?v=2.3.0" download class="btn-accent" title="Download CHIRP CSV">
               <i class="fa-solid fa-file-arrow-down"></i>
               <span class="hidden sm:inline">CSV Export</span>
             </a>
@@ -857,6 +922,7 @@
         <p class="mt-4 font-mono text-sm">Loading frequency database...</p>
       </div>
     </div>
+    </div>
 
     <!-- Donate -->
     <section id="donate" class="mt-14 animate-fade-in-up" aria-label="Support this project">
@@ -870,7 +936,7 @@
       <div class="glass-panel rounded-2xl p-5 sm:p-6 grid grid-cols-1 md:grid-cols-[220px_1fr] gap-6 items-center">
         <div class="text-center">
           <div class="bg-white p-3 rounded-2xl mx-auto w-48 h-48 shadow-xl border border-slate-200">
-            <img src="donate_qr_user.jpg?v=2.2.1" alt="DuitNow donation QR for 9M2PJU" width="192" height="192" class="w-full h-full object-contain" loading="lazy" />
+            <img src="donate_qr_user.jpg?v=2.3.0" alt="DuitNow donation QR for 9M2PJU" width="192" height="192" class="w-full h-full object-contain" loading="lazy" />
           </div>
           <p class="text-[11px] text-slate-500 font-medium mt-3">Scan with any Malaysian banking app,<br/>TNG eWallet or Grab</p>
         </div>
@@ -1040,7 +1106,7 @@
           Hosting, updates &amp; field testing cost time and money. Every ringgit keeps this database free and ad-free. 73! 🇲🇾
         </p>
         <div class="bg-white p-3 rounded-2xl mx-auto w-44 h-44 shadow-xl mb-2 border border-slate-200">
-          <img src="donate_qr_user.jpg?v=2.2.1" alt="DuitNow QR — donate to 9M2PJU with any Malaysian banking app or TNG eWallet" width="176" height="176" class="w-full h-full object-contain" loading="lazy" />
+          <img src="donate_qr_user.jpg?v=2.3.0" alt="DuitNow QR — donate to 9M2PJU with any Malaysian banking app or TNG eWallet" width="176" height="176" class="w-full h-full object-contain" loading="lazy" />
         </div>
         <p class="text-[11px] text-slate-400 font-medium mb-4">DuitNow QR — scan with any MY banking app / TNG / Grab</p>
         <div class="grid grid-cols-3 gap-2">
@@ -1087,6 +1153,8 @@
       </div>
     </div>
   </div>
+
+
 
 
 
@@ -3512,7 +3580,7 @@
     <div class="grid grid-cols-5 gap-1 px-2 pt-2 max-w-md mx-auto">
       <a href="#controls" class="flex flex-col items-center gap-0.5 py-1.5 rounded-xl text-emerald-400 hover:bg-white/5 text-[10px] font-bold"><i class="fa-solid fa-magnifying-glass text-base"></i>Search</a>
       <button id="navNearBtn" class="flex flex-col items-center gap-0.5 py-1.5 rounded-xl text-slate-400 hover:text-white hover:bg-white/5 text-[10px] font-bold"><i class="fa-solid fa-location-crosshairs text-base"></i>Near</button>
-      <a href="9M2PJU.csv?v=2.2.1" download class="flex flex-col items-center gap-0.5 py-1.5 rounded-xl text-slate-400 hover:text-white hover:bg-white/5 text-[10px] font-bold"><i class="fa-solid fa-file-arrow-down text-base"></i>CSV</a>
+      <a href="9M2PJU.csv?v=2.3.0" download class="flex flex-col items-center gap-0.5 py-1.5 rounded-xl text-slate-400 hover:text-white hover:bg-white/5 text-[10px] font-bold"><i class="fa-solid fa-file-arrow-down text-base"></i>CSV</a>
       <button id="navDonateBtn" class="flex flex-col items-center gap-0.5 py-1.5 rounded-xl text-slate-400 hover:text-rose-300 hover:bg-white/5 text-[10px] font-bold"><i class="fa-solid fa-heart text-base"></i>Donate</button>
       <button id="navTopBtn" class="flex flex-col items-center gap-0.5 py-1.5 rounded-xl text-slate-400 hover:text-white hover:bg-white/5 text-[10px] font-bold"><i class="fa-solid fa-arrow-up text-base"></i>Top</button>
     </div>
@@ -3792,9 +3860,10 @@
       const cardClickAttr = hasCoords
         ? `data-lat="${escapeHtml(r.Latitude)}" data-lon="${escapeHtml(r.Longitude)}" data-name="${escapeHtml(r.Name || '')}" data-loc="${escapeHtml(r.Comment || r.Location || '')}" data-freq="${freq}" data-tone="${escapeHtml(r.rToneFreq || '')}" data-offset="${escapeHtml(offsetText)}"`
         : '';
+      const bandCls = 'band-' + getBand(r.Frequency).toLowerCase();
       const cardClass = hasCoords
-        ? 'glass-card rounded-2xl p-5 cursor-pointer card-clickable group'
-        : 'glass-card rounded-2xl p-5 group';
+        ? `glass-card ${bandCls} rounded-2xl p-5 cursor-pointer card-clickable group`
+        : `glass-card ${bandCls} rounded-2xl p-5 group`;
 
       const dirLink = hasCoords
         ? `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(r.Latitude + ',' + r.Longitude)}`
@@ -3941,7 +4010,7 @@
             <span class="px-2.5 py-0.5 rounded-full text-[11px] font-mono font-bold" style="background:rgba(16,185,129,0.1);color:#34d399;border:1px solid rgba(16,185,129,0.2);">${rows.length}</span>
             <div class="section-divider"></div>
           </div>
-          <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
+          <div class="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-3 gap-3 sm:gap-4">
             ${rows.map(r => createCard(r)).join('')}
           </div>
         </section>
@@ -4620,7 +4689,7 @@
     }
 
     // ===== Load CSV =====
-    Papa.parse('9M2PJU.csv?v=2.2.1', {
+    Papa.parse('9M2PJU.csv?v=2.3.0', {
       download: true,
       header: true,
       skipEmptyLines: true,

@@ -4,7 +4,7 @@
 <head>
   <script>
     /* Theme before paint: persisted choice, else OS preference. Default dark. */
-    (function(){try{var s=localStorage.getItem('hamfreq_theme');if(!s){s=(window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches)?'light':'dark';}document.documentElement.setAttribute('data-theme',s);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();
+    (function(){try{var s=localStorage.getItem('hamfreq_theme');if(!s){s='light';}document.documentElement.setAttribute('data-theme',s);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();
   </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -55,7 +55,7 @@
   <meta name="geo.position" content="3.1390;101.6869" />
   <meta name="ICBM" content="3.1390, 101.6869" />
 
-  <link rel="stylesheet" href="assets/styles.css?v=2.2.1" />
+  <link rel="stylesheet" href="assets/styles.css?v=2.3.0" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -132,6 +132,20 @@
     [data-theme="light"] [class*="hover:text-white"]:hover { color: #0f172a !important; }
     [data-theme="light"] [class*="border-white/"] { border-color: rgba(15,23,42,0.12) !important; }
     [data-theme="light"] .bg-primary-600 { background-color: #059669 !important; }
+
+    /* ── v2.3 Logbook redesign ── */
+    html[data-theme="light"] body { background-color: #f4f1ea; background-image: linear-gradient(rgba(26,35,50,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(26,35,50,0.05) 1px, transparent 1px); background-size: 28px 28px, 28px 28px; color: #2a3444; }
+    html[data-theme="light"] header { background: rgba(250,248,243,0.92) !important; border-bottom: 1px solid #e7dfd0 !important; }
+    html[data-theme="light"] footer { background: #ece5d3 !important; border-top: 1px solid #e7dfd0 !important; }
+    html[data-theme="light"] .glass { background: #fffdf8; border: 1px solid #e7dfd0; }
+    html[data-theme="light"] .prose-content h2 { color: #1a2332; }
+    html[data-theme="light"] .prose-content h3 { color: #c2410c; }
+    html[data-theme="light"] .prose-content p, html[data-theme="light"] .prose-content ul, html[data-theme="light"] .prose-content ol { color: #4c5563; }
+    html[data-theme="light"] .prose-content strong { color: #1a2332; }
+    html[data-theme="light"] .prose-content a { color: #c2410c; }
+    html[data-theme="light"] .faq-item, html[data-theme="light"] .step-card, html[data-theme="light"] .toc { background: #fffdf8; border: 1px solid #e7dfd0; border-radius: 14px; }
+    html[data-theme="light"] .step-number { background: rgba(234,88,12,0.14); color: #c2410c; }
+    html[data-theme="dark"] body { background-color: #0a1120; }
   </style>
 
   <script type="application/ld+json">
@@ -407,7 +421,7 @@
         <h2 class="!mt-0">Support MY-HamFreq</h2>
         <p>Help keep this database free and ad-free. Malaysians: scan the DuitNow QR. Everyone: BuyMeCoffee, PayPal or Wise.</p>
         <div class="bg-white p-3 rounded-2xl mx-auto w-40 h-40 shadow-xl border border-slate-200 my-4">
-          <img src="donate_qr_user.jpg?v=2.2.1" alt="DuitNow donation QR for 9M2PJU" width="160" height="160" class="w-full h-full object-contain" loading="lazy" />
+          <img src="donate_qr_user.jpg?v=2.3.0" alt="DuitNow donation QR for 9M2PJU" width="160" height="160" class="w-full h-full object-contain" loading="lazy" />
         </div>
         <p class="!text-xs">DuitNow QR — any MY banking app / TNG / Grab</p>
         <div class="flex flex-wrap gap-2 justify-center mt-4">
