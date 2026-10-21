@@ -1,38 +1,56 @@
 {
-  "name": "Malaysian Amateur Radio Frequency Database",
+  "name": "MY-HamFreq — Malaysian Amateur Radio Frequency Database",
   "short_name": "MY-HamFreq",
-  "description": "Curated simplex, repeater, and PMR frequencies for Malaysian amateur radio operators.",
-  "start_url": "/",
-  "scope": "/",
+  "description": "Curated simplex, repeater, APRS and PMR446 frequencies for Malaysian amateur radio operators. Search, Near Me, offline field use. CHIRP-compatible.",
   "id": "/",
+  "start_url": "./?source=pwa",
+  "scope": "./",
   "display": "standalone",
-  "background_color": "#0f172a",
-  "theme_color": "#0f172a",
-  "orientation": "portrait-primary",
-  "categories": ["utilities", "reference"],
-  "related_applications": [
+  "display_override": ["window-controls-overlay", "standalone", "minimal-ui"],
+  "background_color": "#0b1526",
+  "theme_color": "#0b1526",
+  "orientation": "any",
+  "dir": "ltr",
+  "lang": "en-MY",
+  "categories": ["utilities", "reference", "navigation"],
+  "prefer_related_applications": false,
+  "launch_handler": { "client_mode": "focus-existing" },
+  "edge_side_panel": { "preferred_width": 400 },
+  "icons": [
+    { "src": "icon-192x192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512x512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" }
+  ],
+  "shortcuts": [
     {
-      "platform": "webapp",
-      "url": "https://frequency.hamradio.my/manifest.json"
+      "name": "Search frequencies",
+      "short_name": "Search",
+      "description": "Search callsign, frequency, location or tone",
+      "url": "./?source=shortcut-search#controls",
+      "icons": [{ "src": "icon-192x192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Repeaters near me",
+      "short_name": "Near Me",
+      "description": "Sort repeaters by GPS distance",
+      "url": "./?source=shortcut-near#controls",
+      "icons": [{ "src": "icon-192x192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Download CHIRP CSV",
+      "short_name": "CSV",
+      "description": "Download 9M2PJU.csv for CHIRP",
+      "url": "./9M2PJU.csv?source=shortcut-csv",
+      "icons": [{ "src": "icon-192x192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Support the project",
+      "short_name": "Donate",
+      "description": "DuitNow QR, BuyMeACoffee, PayPal, Wise",
+      "url": "./?source=shortcut-donate#donate",
+      "icons": [{ "src": "icon-192x192.png", "sizes": "192x192" }]
     }
   ],
-  "prefer_related_applications": false,
-  "icons": [
-    {
-      "src": "icon-192x192.png",
-      "sizes": "192x192",
-      "type": "image/png"
-    },
-    {
-      "src": "icon-512x512.png",
-      "sizes": "512x512",
-      "type": "image/png"
-    },
-    {
-      "src": "icon-512x512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "maskable"
-    }
+  "related_applications": [
+    { "platform": "webapp", "url": "https://frequency.hamradio.my/manifest.json" }
   ]
 }

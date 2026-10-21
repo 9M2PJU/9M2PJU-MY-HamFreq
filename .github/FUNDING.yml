@@ -4,6 +4,8 @@
 buy_me_a_coffee: 9m2pju
 
 custom:
+  # PayPal - international donations
+  - https://www.paypal.com/paypalme/9M2PJU
   # Wise - send money internationally with low fees
   - https://wise.com/pay/me/faizulz13
   # DuitNow QR (Malaysia) - scan with any local banking app or TNG eWallet

@@ -52,7 +52,7 @@ function fmtTStep(t) {
 function fmtPower(power, duplex, freq) {
   const f = parseFloat(freq);
   // PMR446
-  if (f >= 446 && f <= 446.2) return '5.0W';
+  if (f >= 446 && f <= 446.2) return '0.5W';
   // Has duplex direction = repeater
   if (duplex === '+' || duplex === '-') return '4.0W';
   // APRS
@@ -111,4 +111,4 @@ const outPath = path.join(__dirname, 'TIDRADIO.csv');
 fs.writeFileSync(outPath, output);
 console.log(`✓ Exported ${rows.length} channels to TIDRADIO.csv`);
 console.log(`  Format: CHIRP-compatible (no Lat/Lon, 6-decimal freq, proper DCS padding)`);
-console.log(`  Power: 4.0W repeaters/APRS, 1.0W simplex/V-channels/PMR446`);
+console.log(`  Power: 4.0W repeaters/APRS, 5.0W simplex, 0.5W PMR446`);

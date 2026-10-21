@@ -112,7 +112,9 @@ function getCategory(row) {
 
 function extractLocation(comment) {
   if (!comment) return '';
-  const m = comment.match(/near\s+(.+?)(?:,\s*None|$)/i);
+  let m = comment.match(/\bat\s+(.+?)\s*[—–-]/);
+  if (m) return m[1].trim();
+  m = comment.match(/near\s+(.+?)(?:,\s*None|$)/i);
   return m ? m[1].trim() : '';
 }
 
@@ -491,7 +493,7 @@ ${jsonLdHtml}
 // ── Cache Busting ────────────────────────────────────────────────────────
 function applyCacheBusting() {
   const pkg = JSON.parse(fs.readFileSync(path.join(__dirname, 'package.json'), 'utf-8'));
-  const version = pkg.version || '2.1.0';
+  const version = pkg.version || '2.2.0';
   const htmlFiles = fs.readdirSync(__dirname).filter(f => f.endsWith('.html'));
 
   htmlFiles.forEach(file => {
@@ -502,8 +504,15 @@ function applyCacheBusting() {
     content = content.replace(/href="assets\/styles\.css(\?v=[^"]+)?"/g, `href="assets/styles.css?v=${version}"`);
     // Replace assets/papaparse.min.js references
     content = content.replace(/src="assets\/papaparse\.min\.js(\?v=[^"]+)?"/g, `src="assets/papaparse.min.js?v=${version}"`);
-    // Replace 9M2PJU.csv references in JS
+    // Replace 9M2PJU.csv references in JS (single quotes)
     content = content.replace(/'9M2PJU\.csv(\?v=[^']+)?'/g, `'9M2PJU.csv?v=${version}'`);
+    // Replace CSV download links (double quotes)
+    content = content.replace(/href="9M2PJU\.csv(\?v=[^"]+)?"/g, `href="9M2PJU.csv?v=${version}"`);
+    content = content.replace(/href="TIDRADIO\.csv(\?v=[^"]+)?"/g, `href="TIDRADIO.csv?v=${version}"`);
+    // Replace icon / favicon references (src + href)
+    content = content.replace(/(src|href)="(icon-192x192\.png|icon-512x512\.png|favicon-32\.png|favicon-16\.png|favicon\.ico)(\\?v=[^"]+)?"/g, `$1="$2?v=${version}"`);
+    // Replace donation QR references (src)
+    content = content.replace(/src="(donate_qr_user\.jpg)(\?v=[^"]+)?"/g, `src="$1?v=${version}"`);
 
     fs.writeFileSync(filePath, content, 'utf-8');
   });
