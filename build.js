@@ -502,6 +502,8 @@ function applyCacheBusting() {
 
     // Replace assets/styles.css references
     content = content.replace(/href="assets\/styles\.css(\?v=[^"]+)?"/g, `href="assets/styles.css?v=${version}"`);
+    // Replace assets/theme.css references (unified professional theme)
+    content = content.replace(/href="assets\/theme\.css(\?v=[^"]+)?"/g, `href="assets/theme.css?v=${version}"`);
     // Replace assets/papaparse.min.js references
     content = content.replace(/src="assets\/papaparse\.min\.js(\?v=[^"]+)?"/g, `src="assets/papaparse.min.js?v=${version}"`);
     // Replace 9M2PJU.csv references in JS (single quotes)
