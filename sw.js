@@ -1,4 +1,4 @@
-const CACHE_NAME = 'my-hamfreq-v9';
+const CACHE_NAME = 'my-hamfreq-v10';
 const STATIC_ASSETS = [
   './',
   './index.html',
@@ -14,6 +14,7 @@ const STATIC_ASSETS = [
   './icon-192x192.png',
   './icon-512x512.png',
   './assets/styles.css',
+  './assets/theme.css',
   './assets/papaparse.min.js',
   './donate_qr_user.jpg'
 ];
