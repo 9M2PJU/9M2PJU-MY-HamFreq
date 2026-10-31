@@ -3999,8 +3999,8 @@
     });
     donateCloseBtn.addEventListener('click', closeDonation);
 
-    // No auto-popup: donation is available via Donate buttons, #donate section and bottom nav.
-    // (Previously auto-opened on every visit — removed for UX + PWA install conflicts.)
+    // Auto-popup on every visit: short delay so the database renders first.
+    setTimeout(openDonation, 1500);
 
     donationModal.addEventListener('click', (e) => {
       if (e.target === donationModal) closeDonation();
